@@ -1,0 +1,53 @@
+#imageContainer {
+     display: flex;
+    flex-wrap: wrap;
+    
+    overflow-y: scroll;
+    
+    position: fixed;
+    top: 60px;
+    left: 0%;
+    transform: translateX(-0%);
+    width: 100%;
+    height: calc(100vh - 130px);
+    border: 0px solid #3f1717;
+    
+       
+  }
+  
+  .imageItem {
+    width: 90% ;
+    height: 50%;
+    margin: 3px;
+    background-color: #dccece;
+    border: 1px solid #dccece;
+    border-radius: 5px;
+    border: 0px solid #dccece;
+  }
+
+
+  #imageContainer::-webkit-scrollbar {
+    display: none;
+  }
+  
+  /* Hide scrollbar for IE, Edge and Firefox */
+  #imageContainer {
+    -ms-overflow-style: none;  /* IE and Edge */
+    scrollbar-width: none;  /* Firefox */
+  }
+
+  .parentdiv{
+    width: 15%;
+    height: calc(100vh - 130px)-30%;
+    margin: 5px;
+    display: flex;
+    flex-wrap: wrap;
+   
+    border: 0px solid #dccece;
+
+  }
+  .spanclass
+  {
+    height: 50%;
+    width: 90% ;
+  }

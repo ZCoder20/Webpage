@@ -1,0 +1,111 @@
+/* Reset default styles */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+  }
+  
+  body {
+    font-family: Arial, sans-serif;
+  }
+  
+  header {
+    background-image: url('header-background.jpg');
+    background-size: cover;
+    background-position: center;
+    color: #fff;
+    padding: 40px;
+  }
+  
+  .nav-links li {
+    display: inline-block;
+    margin-left: 20px;
+  }
+  
+  .hero-text {
+    max-width: 600px;
+    margin-top: 100px;
+  }
+  
+  .cta-button {
+    background-color: #ff5a5f;
+    color: #fff;
+    padding: 10px 20px;
+    font-size: 16px;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+  }
+  
+  .search-section {
+    padding: 40px;
+  }
+  
+  .search-bar input,
+  .search-bar button {
+    padding: 10px;
+    font-size: 16px;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+  }
+  
+  .search-bar button {
+    background-color: #ff5a5f;
+    color: #fff;
+    border: none;
+    margin-left: 10px;
+    cursor: pointer;
+  }
+  
+  .featured-section {
+    padding: 40px;
+  }
+  
+  .card-container {
+    display: flex;
+    justify-content: space-between;
+    flex-wrap: wrap;
+  }
+  
+  .card {
+    width: 300px;
+    background-color: #f2f2f2;
+    padding: 20px;
+    margin-bottom: 20px;
+    border-radius: 4px;
+  }
+  
+  .card img {
+    width: 100%;
+    margin-bottom: 10px;
+    border-radius: 4px;
+  }
+  
+  .card h3 {
+    font-size: 18px;
+    margin-bottom: 10px;
+  }
+  
+  .card p {
+    font-size: 14px;
+    margin-bottom: 20px;
+  }
+  
+  .card-link {
+    display: inline-block;
+    background-color: #ff5a5f;
+    color: #fff;
+    padding: 8px 16px;
+    text-decoration: none;
+  }
+  .banner {
+    background-color: #ff5a5f;
+    color: #fff;
+    padding: 10px;
+    text-align: center;
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    z-index: 9999;
+  }

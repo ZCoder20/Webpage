@@ -1,0 +1,97 @@
+.scroll-menu {
+    align-self: center;
+    align-content: center;
+    position: fixed;
+      top: 60px; /* Adjust this value to set the distance below the banner */
+      left: 0;
+      width: 100%;
+      overflow-x: auto;
+      white-space: nowrap;
+  }
+  
+  .scroll-content {
+    display: inline-block;
+  }
+  
+  
+  .menu {
+    background-color: #c9d5dc;
+    display: flex;
+    overflow-x: auto;
+    width:1000%;
+    padding: 20px;
+    border: 0px solid #c9d5dc;
+  }
+  
+  .menu-item {
+    flex: 0 0 auto;
+    margin-right: 20px;
+    display: inline-block;
+    width: 50px; 
+    height: 50px; 
+    margin-right: 10px; 
+    cursor: pointer;
+  }
+
+  .scroll-buttons {
+    display: flex;
+    justify-content: space-between;
+    margin-bottom: 10px;
+  }
+  
+  .scroll-buttons button {
+    padding: 5px 10px;
+  }
+
+
+
+
+.scroll-buttons {
+  display: flex;
+}
+
+.scroll-buttons button {
+  padding: 5px 10px;
+}
+
+.menu-scroll {
+  overflow-x: scroll;
+  flex-grow: 1;
+}
+
+.menu {
+  display: flex;
+  background-color: #a4b3bb;
+  padding: 1px;
+  align-self: center;
+  align-items: center;
+  text-align: center;
+  
+}
+
+
+
+.menu-container {
+  position: fixed;
+  top: 50px;
+  left: 30%;
+  transform: translateX(-20%);
+  width: 60%; 
+ height: 70px;
+ display: flex;
+ justify-content: center;
+ align-items: center;
+  background-color: #ffffff;
+}
+
+
+
+.menu-scroll {
+  overflow-x: scroll;
+  flex-grow: 1;
+}
+
+
+.menu-item {
+  margin-right: 20px;
+}
