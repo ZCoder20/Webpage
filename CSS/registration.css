@@ -1,0 +1,80 @@
+body {
+    margin: 0;
+    padding: 0;
+}
+
+
+.container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: calc(100vh - 50px);
+    overflow-y: auto;
+    padding-top: 50px;
+}
+
+.user-type-container label {
+    margin-right: 10px;
+}
+.user-type-container {
+position: fixed;
+top: 52px;
+
+transform: translateX(15%);
+height: 20px;
+width:70%;
+left: 0;
+right: 0;
+background-color: #fffdfd;
+padding: 10px;
+text-align: center;
+z-index: 2;
+justify-content: center;
+}
+
+.form-container {
+/* Update the margin-top value to create space below the fixed banner and user type section */
+
+margin: 0 auto; /* Center-align the form container */
+margin-top:100px;
+width:50%;     
+height: calc(100vh - 250px);
+padding: 10px;
+background-color: #fff;
+border: 0px solid #fff;
+border-radius: 4px;
+display: none; /* Hide the form container initially */
+overflow-y: scroll;
+}
+
+.form-group {
+    margin-bottom: 10px;
+}
+.form-group label {
+    display: inline-block;
+width: 20%;
+}
+
+.form-group input,
+.form-group select,
+.form-group textarea {
+    width: 50%;
+    padding: 10px;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+}
+.form-group.error {
+    color: red;
+}
+.form-group.error input,
+.form-group.error select,
+.form-group.error textarea {
+    border-color: red;
+}
+.form-group .error-message {
+    margin-left: 10px;
+    color: red;
+}
+#submit-btn {
+    margin-top: 20px;
+}
