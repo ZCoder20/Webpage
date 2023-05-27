@@ -1,0 +1,149 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Blue Theme Page</title>
+ 
+  <link rel="stylesheet" type="text/css" href="./CSS/dynamic.css">
+  <link rel="stylesheet" type="text/css" href="./CSS/scrollmenu.css">
+  <link rel="stylesheet" type="text/css" href="./CSS/Search.css">
+  <link rel="stylesheet" type="text/css" href="./CSS/displayresult.css">
+  <link rel="stylesheet" type="text/css" href="./CSS/post.css">
+  <script src="./JS/dynamic.js"></script>
+  <script src="./JS/scrollmenu.js"></script>
+  <script src="./JS/script.js"></script>
+  <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+  <script src="./JS/posting.js"></script>
+</head>
+<body>
+    <script>
+        // Add event listeners to the menu items
+        var menuItems = document.querySelectorAll('.menu-item');
+        menuItems.forEach(function(item) {
+          item.addEventListener('click', function() {
+            // Perform action when a menu item is clicked
+            // Example: You can open a link or perform other operations based on the clicked item
+            console.log('Clicked:', item.alt);
+          });
+        });
+      </script>
+    <div id="bannerContainer"></div>
+    
+    
+    
+    <div id="postcontainer">
+
+      <form id="myForm" enctype="multipart/form-data">
+        <table width="100%">
+          <tr><td colspan="2"><label for="textarea1">Posting Details</label></td><td colspan="1"></td><td> <textarea id="textarea1" cols="40" name="textarea1"></textarea></td></tr>
+          <tr><td colspan="4"></td></tr>
+          <tr><td colspan="2"><label for="textarea2">Address Detials</label></td><td colspan="1"></td><td> <textarea id="textarea2" cols="40" name="textarea2"></textarea></td></tr>
+          <tr><td colspan="4"></td></tr>
+          <tr><td colspan="2"><label for="dropdown1">Total S:</label></td><td colspan="1"></td><td> 
+            <select id="dropdown1" name="dropdown1">
+              <option value="1">0-50</option>
+              <option value="2">51-100</option>
+              <option value="3">101-500</option>
+              <option value="4">501-1000</option>
+              <option value="5">1001-5000</option>
+              <option value="6">5001-10000</option>
+              <option value="7">10001-50000</option>
+              <option value="8">50001-100000</option>
+              <option value="9">100000-1000000</option>
+              <option value="10">1000000+</option>
+          </select>
+          </td></tr>
+
+          <tr><td colspan="4"></td></tr>
+          <tr><td colspan="2"><label for="dropdown2">Total S:</label></td><td colspan="1"></td><td> 
+            <select id="dropdown2" name="dropdown2">
+              <option value="1">0-50</option>
+              <option value="2">51-100</option>
+              <option value="3">101-500</option>
+              <option value="4">501-1000</option>
+              <option value="5">1001-5000</option>
+              <option value="6">5001-10000</option>
+              <option value="7">10001-50000</option>
+              <option value="8">50001-100000</option>
+              <option value="9">100000-1000000</option>
+              <option value="10">1000000+</option>
+              <!-- Add dropdown options here -->
+          </select>
+          </td></tr>
+
+          <tr><td colspan="4"></td></tr>
+          <tr><td colspan="2"><label for="dropdown2">Total S:</label></td><td colspan="1"></td><td> 
+            <select id="dropdown2" name="dropdown2">
+              <option value="1">0-50</option>
+              <option value="2">51-100</option>
+              <option value="3">101-500</option>
+              <option value="4">501-1000</option>
+              <option value="5">1001-5000</option>
+              <option value="6">5001-10000</option>
+              <option value="7">10001-50000</option>
+              <option value="8">50001-100000</option>
+              <option value="9">100000-1000000</option>
+              <option value="10">1000000+</option>
+          </select>
+          </td></tr>
+
+          <tr><td colspan="4"></td></tr>
+          <tr><td colspan="2"><label for="dropdown3">Total S:</label></td><td colspan="1"></td><td> 
+            <select id="dropdown3" name="dropdown3">
+              <option value="1">0-50</option>
+              <option value="2">51-100</option>
+              <option value="3">101-500</option>
+              <option value="4">501-1000</option>
+              <option value="5">1001-5000</option>
+              <option value="6">5001-10000</option>
+              <option value="7">10001-50000</option>
+              <option value="8">50001-100000</option>
+              <option value="9">100000-1000000</option>
+              <option value="10">1000000+</option>
+          </select>
+          </td></tr>
+
+         
+
+          <tr><td colspan="4"></td></tr>
+          <tr><td colspan="2"><label for="photoUpload">Please upload thumbnail</label></td><td colspan="1"></td><td> 
+            <input type="file" id="photoUpload" name="photoUpload">
+          </td></tr>
+          <tr><td colspan="4"></td></tr>
+          <tr><td colspan="4"><div id="photoPreview"></div></td>
+            </tr>
+
+
+            <tr><td colspan="4"></td></tr>
+            <tr><td colspan="2"> <label for="documentUpload">Please upload additional Docs</label></td><td colspan="1"></td><td> 
+              <input type="file" id="documentUpload" name="documentUpload" multiple>
+            </td></tr>
+
+
+            <tr><td colspan="4"></td></tr>
+            <tr><td colspan="4"> <div id="text1" class="scrollable-div">
+              <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Donec interdum ultrices metus, sed molestie magna luctus at. Nunc faucibus mi a quam congue, at tempus metus faucibus. Nam eleifend, enim eu faucibus rhoncus, odio est auctor velit, non semper libero arcu a nibh. Ut tincidunt, risus eu consectetur ullamcorper, velit diam aliquam sem, sit amet egestas ex dolor ut metus. Fusce et elementum eros. Phasellus id lacus nec lectus malesuada lacinia. Sed accumsan elit felis, et commodo velit semper nec. Nullam laoreet mauris in semper sollicitudin. In sed magna est.</p>
+              <p>Vestibulum a lacinia enim. Aliquam a eleifend dui. Sed dapibus ultricies ipsum, ut aliquet neque semper a. Vestibulum ante ipsum primis in faucibus orci luctus et ultrices posuere cubilia curae; Proin cursus lorem dui, a tincidunt purus tristique a. Curabitur nec eros tellus. Phasellus tristique consectetur tortor, ac pharetra sem mattis id. In hac habitasse platea dictumst. Vestibulum cursus congue tortor in iaculis.</p>
+              <!-- Add more content as needed -->
+          </div>
+            </td></tr>
+
+            <tr>
+              <td colspan="4">
+              <input type="checkbox" id="consent1">I here by confirm that i have read and agree with above.
+            </td>
+            
+          </tr>
+
+
+        </table>
+        
+        
+
+        <br>
+        <input type="submit" id="submitBtn" value="Submit">
+    </form>
+
+
+    </div>
+    </body>
+    </html>
