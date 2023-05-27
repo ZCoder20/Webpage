@@ -37,6 +37,7 @@ $(document).ready(function() {
 
                 // If the form is valid, send the data to the API
                 if (isValid) {
+                   // var file = $('#id-upload').prop('files')[0];
                     var data = {
                         userType: $('input[name="user-type"]:checked').val(),
                         firstName: $('#first-name').val(),
@@ -55,8 +56,37 @@ $(document).ready(function() {
                         idType: $('#id-type').val(),
                         idIssueState: $('#id-issue-state').val(),
                         idIssueCountry: $('#id-issue-country').val(),
+                       
                     };
-
+                    var fileInput = $('#id-upload')[0];
+                    var file = fileInput.files[0];
+            
+                    if (file) {
+                        var reader = new FileReader();
+                        reader.onloadend = function() {
+                            // Add the file data to the form data as base64 encoded string
+                            data.photo = reader.result;
+            
+                            // Convert form data to JSON
+                            var jsonData = JSON.stringify(data);
+          
+                            // Send jsonData to the service
+            
+                            // Clear form inputs (optional)
+                            visibleInputs.val('');
+                            $('#id-upload').val('');
+            
+                            // Hide the form container (optional)
+                            $('.form-container').hide();
+                        };
+                        reader.readAsDataURL(file);
+                    } 
+                        
+                   
+                   
+                   
+                    // Add the file to the form data
+                    
                     // Additional logic to handle the image upload
 alert(JSON.stringify(data));
                     // Send the data to the API endpoint
@@ -67,6 +97,8 @@ alert(JSON.stringify(data));
                         contentType: 'application/json',
                         success: function(response) {
                             // Handle the success response
+                            visibleInputs.val('');
+        $('#id-upload').val('');
                         },
                         error: function(error) {
                             // Handle the error response

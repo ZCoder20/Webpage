@@ -58,10 +58,22 @@ window.addEventListener('load', function() {
     banner.appendChild(expandableMenu);
     banner.appendChild(learnMoreLink);
   
+
     // Handle the login button click event
     loginButton.addEventListener('click', function() {
+
+     
+        document.getElementById('popup-overlay').style.display = 'block';
+    
+      
+     
+        //document.getElementById('popup-overlay').style.display = 'none';
+
+
+
+      // old coe for menu auto login
       loginButton.style.display = 'none';
-      //menuContent.style.display = 'block';
+  
   
       // Simulate user login
       var loggedInUsername = 'John Doe';
@@ -94,7 +106,10 @@ window.addEventListener('load', function() {
          // subMenu.style.display = 'block';
         }
       });
-
+      var closebtn =  document.getElementById('crossbutton')
+      closebtn.addEventListener('click', function() {
+        document.getElementById('popup-overlay').style.display = 'none';
+      });
 
       // mouse out 
 
@@ -121,4 +136,5 @@ window.addEventListener('load', function() {
   
     return banner;
   }
+ 
   
