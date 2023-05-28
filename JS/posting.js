@@ -1,5 +1,3 @@
-
-
 $(document).ready(function() {
     
 
@@ -51,29 +49,31 @@ $(document).ready(function() {
         for (var pair of formData.entries()) {
             formObject[pair[0]] = pair[1];
         }
-
+       
         var dropdown1 = document.getElementById('dropdown3');
         var dropdown2 = document.getElementById('dropdown2');
         formObject.dropdown2 = dropdown1.value;
         formObject.dropdown4 = dropdown2.value;
-
+        
         // Get uploaded photo
         var photoUpload = document.getElementById('photoUpload');
         formObject.photoUpload = photoUpload.files[0].name;
-
+        
 
         // Make API call
         $.ajax({
             url: 'https://www.localhost:8000/chaloAPIbanye',
             type: 'POST',
-            data: formData,
-            processData: false,
-            contentType: false,
+            data: JSON.stringify(formObject),
+           
+            contentType: 'application/json',
             success: function(response) {
+                alert("dropdownq")
                 console.log('API response:', response);
                 // Handle success response here
             },
             error: function(xhr, status, error) {
+                alert("dropdowns")
                 console.log('API error:', error);
                 // Handle error here
             }

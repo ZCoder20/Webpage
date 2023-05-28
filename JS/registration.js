@@ -39,23 +39,23 @@ $(document).ready(function() {
                 if (isValid) {
                    // var file = $('#id-upload').prop('files')[0];
                     var data = {
-                        userType: $('input[name="user-type"]:checked').val(),
+                        isSeller: $('input[name="user-type"]:checked').val(),
                         firstName: $('#first-name').val(),
                         middleName: $('#middle-name').val(),
                         lastName: $('#last-name').val(),
-                        email: $('#email').val(),
-                        phoneNumber: $('#phone-number').val(),
-                        streetAddress: $('#street-address').val(),
+                       // email: $('#email').val(),
+                       // phoneNumber: $('#phone-number').val(),
+                        streetAddress1: $('#street-address').val(),
                         city: $('#city').val(),
                         state: $('#state').val(),
-                        zipCode: $('#zip-code').val(),
+                       // zipCode: $('#zip-code').val(),
                         country: $('#country').val(),
-                        nationality: $('#nationality').val(),
+                        citizenCountry: $('#nationality').val(),
                         dob: $('#dob').val(),
                         idNumber: $('#id-number').val(),
                         idType: $('#id-type').val(),
-                        idIssueState: $('#id-issue-state').val(),
-                        idIssueCountry: $('#id-issue-country').val(),
+                       // idIssueState: $('#id-issue-state').val(),
+                        issueCountry: $('#id-issue-country').val(),
                        
                     };
                     var fileInput = $('#id-upload')[0];
