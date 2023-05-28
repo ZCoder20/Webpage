@@ -59,6 +59,7 @@ function showTab(n) {
 }
 
 function nextPrev(n) {
+ 
   // This function will figure out which tab to display
   var x = document.getElementsByClassName("tab");
   // Exit the function if any field in the current tab is invalid:
@@ -86,9 +87,12 @@ function validateForm() {
   for (i = 0; i < y.length; i++) {
     // If a field is empty...
     if (y[i].value == "") {
+      alert(y[i].id);
+      alert(y[i].value);
       // add an "invalid" class to the field:
       y[i].className += " invalid";
       // and set the current valid status to false
+     
       valid = false;
     }
   }
@@ -108,3 +112,93 @@ function fixStepIndicator(n) {
   //... and adds the "active" class on the current step:
   x[n].className += " active";
 }
+
+function enablenextbtn()
+{
+  
+  
+  
+}
+
+function previewset()
+{
+  const fileInput = document.getElementById('fileInput');
+  const preview = document.getElementById('preview');
+  const file = fileInput.files[0];
+alert(file.type);
+  if (file) {
+    const reader = new FileReader();
+
+    reader.addEventListener('load', function() {
+      if (file.type.startsWith('image/')) {
+        const image = new Image();
+        image.src = reader.result;
+        preview.innerHTML = '';
+        preview.appendChild(image);
+      } else if (file.type.startsWith('video/')) {
+        const video = document.createElement('video');
+        video.src = reader.result;
+        video.controls = true;
+        preview.innerHTML = '';
+        preview.appendChild(video);
+        video.addEventListener('click', function() {
+          if (video.paused) {
+            video.play();
+          } else {
+            video.pause();
+          }
+        });
+      } 
+      else {
+        const docIcon = document.createElement('i');
+        docIcon.classList.add('far', 'fa-file');
+        const docName = document.createElement('span');
+        docName.textContent = file.name;
+        const docContainer = document.createElement('div');
+        docContainer.classList.add('document-preview');
+        docContainer.appendChild(docIcon);
+        docContainer.appendChild(docName);
+        preview.innerHTML = '';
+        preview.appendChild(docContainer);
+      }
+      //else {
+      //  preview.innerHTML = 'File type not supported.';
+    //  }
+    });
+
+    reader.readAsDataURL(file);
+  }
+}
+
+
+fileInput.addEventListener('change', function() {
+  const file = fileInput.files[0];
+alert(file.type);
+  if (file) {
+    const reader = new FileReader();
+
+    reader.addEventListener('load', function() {
+      if (file.type.startsWith('image/')) {
+        const image = new Image();
+        image.src = reader.result;
+        preview.innerHTML = '';
+        preview.appendChild(image);
+      } else if (file.type.startsWith('video/')) {
+        const video = document.createElement('video');
+        video.src = reader.result;
+        video.controls = true;
+        preview.innerHTML = '';
+        preview.appendChild(video);
+      }
+      
+      else {
+        preview.innerHTML = 'File type not supported.';
+      }
+    });
+
+    reader.readAsDataURL(file);
+  }
+});
+
+
+

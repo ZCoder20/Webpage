@@ -1,3 +1,4 @@
+var userlogin = false;
 // Generate the banner dynamically
 window.addEventListener('load', function() {
     var bannerContainer = document.getElementById('bannerContainer');
@@ -26,6 +27,7 @@ window.addEventListener('load', function() {
     var loginButton = document.createElement('button');
     loginButton.classList.add('login-button');
     loginButton.textContent = 'Login';
+    
   
     var menuContent = document.createElement('div');
     menuContent.classList.add('menu-content');
@@ -34,9 +36,13 @@ window.addEventListener('load', function() {
     profileLink.href = '#';
     profileLink.textContent = 'Profile';
   
-    var settingsLink = document.createElement('a');
-    settingsLink.href = '#';
-    settingsLink.textContent = 'Settings';
+    var settingsLink = document.createElement('button');
+    
+    settingsLink.textContent = 'New Post';
+    settingsLink.addEventListener('click', function(e) {
+      window.open('Posting.html','_blank');
+    });
+  
   
     var previousOrdersLink = document.createElement('a');
     previousOrdersLink.href = '#';
@@ -60,12 +66,20 @@ window.addEventListener('load', function() {
   
 
     // Handle the login button click event
+   
     loginButton.addEventListener('click', function() {
 
-     
-        document.getElementById('popup-overlay').style.display = 'block';
+      var errorlogin = document.getElementById('errorlogin');
+      if(errorlogin!= undefined)
+      {
+        errorlogin.style.display = 'none';
+      }
     
-      
+       // document.getElementById('popup-overlay').style.display = 'block';
+    
+       var popupWindow = window.open('logincontrol.html', 'Popup','directories=no,titlebar=no,toolbar=no,location=no,status=no,menubar=no,scrollbars=no,resizable=no,width=400,height=400, top=130px');
+       
+
      
         //document.getElementById('popup-overlay').style.display = 'none';
 
@@ -77,7 +91,7 @@ window.addEventListener('load', function() {
   
       // Simulate user login
       var loggedInUsername = 'John Doe';
-  
+  userlogin = true;
       var usernameButton = document.createElement('button');
       usernameButton.classList.add('login-button');
       usernameButton.textContent = loggedInUsername;
@@ -106,10 +120,7 @@ window.addEventListener('load', function() {
          // subMenu.style.display = 'block';
         }
       });
-      var closebtn =  document.getElementById('crossbutton')
-      closebtn.addEventListener('click', function() {
-        document.getElementById('popup-overlay').style.display = 'none';
-      });
+     
 
       // mouse out 
 
@@ -136,5 +147,23 @@ window.addEventListener('load', function() {
   
     return banner;
   }
- 
-  
+   // JavaScript to show/hide the additional div
+   
+   function clickcreateorder()
+   {
+    var showAdditionalDivBtn = document.getElementById('showAdditionalDiv');
+    var additionalDiv = document.querySelector('.additional-div');
+    var errorlogin = document.getElementById('errorlogin');
+    
+     if(userlogin)
+     {
+       additionalDiv.style.display = 'block';
+       errorlogin.style.display = 'none';
+       showTab(0);
+     }
+     else{
+       errorlogin.style.display = 'block';
+     }
+   }
+   
+   

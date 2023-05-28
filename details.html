@@ -4,8 +4,11 @@
     <link rel="stylesheet" type="text/css" href="CSS/details.css">
     <link rel="stylesheet" type="text/css" href="./CSS/dynamic.css">
     <script src="./JS/script.js"></script>
-    <script src="./JS/details.js"></script>
+  
     <script src="./JS/dynamic.js"></script>
+    <script src="./JS/details.js"></script>
+    <script src="https://www.paypal.com/sdk/js?client-id=Ad6TozGFpa2PK_ye9eS7oWliBCyluIaWvMx5BppMMgcXDFkv9YAyMVy1aOFKfaDQaUZ4Bz0QcRN8J0T1"></script>
+
   <style>
     /* CSS for the fixed banner */
     
@@ -57,7 +60,8 @@
             </table>
         
           
-          <button id="showAdditionalDiv">Create Work Order</button>
+          <button id="showAdditionalDiv" onclick="clickcreateorder();">Create Work Order</button> <span style="display:none;width:20%;text-align: center;" id="errorlogin"><label style="background-color: red;">Please login to move forward.</label></span>
+          
           
         </div>
     </td>
@@ -73,22 +77,86 @@
         <form id="regForm" action="#">
             <h1>Order Prepration</h1>
             <!-- One "tab" for each step in the form: -->
-            <div class="tab">Name:
-              <p><input placeholder="First name..." oninput="this.className = ''" name="fname"></p>
-              <p><input placeholder="Last name..." oninput="this.className = ''" name="lname"></p>
+            <div class="tab">
+             <H2 align="center">Declaration.. Please read carefully</H2>
+             <br/>
+             <div style=""><span><p>Hello user, please read aggreement carefully.By Clicking below button you are confirming follwoing</p></span>
+              <ul><li>There is no XXXXXXXXXXXXX in the XXXXXXXXX</li>
+                <li>There is no XXXXXXXXXXXXX in the XXXXXXXXX</li>
+                <li>There is no XXXXXXXXXXXXX in the XXXXXXXXX</li>
+                <li>There is no XXXXXXXXXXXXX in the XXXXXXXXX</li>
+                <li>There is no XXXXXXXXXXXXX in the XXXXXXXXX</li>
+                <li>There is no XXXXXXXXXXXXX in the XXXXXXXXX</li>
+                <li>There is no XXXXXXXXXXXXX in the XXXXXXXXX</li></ul></div>
+             <br/>
+             
+             <button id="acceptterms" onclick="enablenextbtn();">I accpet all the terms.</button>
+            
+             
+             <!--<table align="center" border="3px" width="90%">
+              <tr>
+                <td colspan="2"><span><p>Hello user, please read aggreement carefully.</p><br/><p>By Clicking below button you are confirming follwoing</p>
+              <br><ul><li>There is no XXXXXXXXXXXXX in the XXXXXXXXX</li>
+                <li>There is no XXXXXXXXXXXXX in the XXXXXXXXX</li>
+                <li>There is no XXXXXXXXXXXXX in the XXXXXXXXX</li>
+                <li>There is no XXXXXXXXXXXXX in the XXXXXXXXX</li>
+                <li>There is no XXXXXXXXXXXXX in the XXXXXXXXX</li>
+                <li>There is no XXXXXXXXXXXXX in the XXXXXXXXX</li>
+                <li>There is no XXXXXXXXXXXXX in the XXXXXXXXX</li></ul></span></td></tr>
+             
+
+              <tr><td colspan="2">
+                <input type="checkbox" id="vehicle1" name="vehicle1" value="Bike">
+  <label for="vehicle1"> I accept the terms and confirm that I am abide by guidline of respective platform</label>
+               
+                             </td></tr>
+             </table>-->
             </div>
-            <div class="tab">Contact Info:
-              <p><input placeholder="E-mail..." oninput="this.className = ''" name="email"></p>
-              <p><input placeholder="Phone..." oninput="this.className = ''" name="phone"></p>
+            <div class="tab">Please upload kjfhdsfjksdhfdskajfhsadjkfg jksdfhsajgfas fsfs fshsfhs
+              <label for="photoUpload">Please upload thumbnail</label></td><td colspan="1"></td><td> 
+                <input style="width:auto;" type="file" id="fileInput" onchange="previewset();" name="photoUpload">
+                <div id="preview">cdcdfasfdsfasdf</div>
             </div>
-            <div class="tab">Birthday:
-              <p><input placeholder="dd" oninput="this.className = ''" name="dd"></p>
-              <p><input placeholder="mm" oninput="this.className = ''" name="nn"></p>
-              <p><input placeholder="yyyy" oninput="this.className = ''" name="yyyy"></p>
+            <div class="tab">
+              <p><input placeholder="Please enter total time in hr you want to use" id="totaltime" oninput="this.className = ''" name="totaltime"></p>
+              <label>Total Cost:</label><table><tr><td>Rate per hrs</td><td>$$$</td></tr>
+              
+                <tr><td>Total hrs rate</td><td>$$$</td></tr>
+                <tr><td>Processing Fees</td><td>$$$</td></tr>
+                <tr><td>Tax on state</td><td>$$$</td></tr>
+                <tr><td>Deposit</td><td>$$$</td></tr>
+                <tr><td>Final Cost</td><td><label id="finalcost">100</label></td></tr>
+              </table>
             </div>
-            <div class="tab">Login Info:
-              <p><input placeholder="Username..." oninput="this.className = ''" name="uname"></p>
-              <p><input placeholder="Password..." oninput="this.className = ''" name="pword" type="password"></p>
+            <div class="tab">Payment
+              <div id="paypal-button-container"></div>
+              <script>
+paypal.Buttons({
+  createOrder: function(data, actions) {
+   
+    //var amount = data.getElementById("finalcost").value;
+   // alert(amount);
+    // Set up the transaction details
+    return actions.order.create({
+      purchase_units: [{
+        amount: {
+          value:  10.0
+          // Set the amount for the transaction
+        }
+      }]
+    });
+  },
+  onApprove: function(data, actions) {
+    // Capture the funds from the transaction
+    return actions.order.capture().then(function(details) {
+      // Display a success message to the user
+      alert('Transaction completed by ' + details.payer.name.given_name);
+      // You can send an AJAX request to your backend to store transaction details
+    });
+  }
+}).render('#paypal-button-container');
+
+              </script>
             </div>
             <div style="overflow:auto;">
               <div style="float:right;">
@@ -106,17 +174,10 @@
           </form>
           
               </div>
-
+             
 
   <script>
-    // JavaScript to show/hide the additional div
-    var showAdditionalDivBtn = document.getElementById('showAdditionalDiv');
-    var additionalDiv = document.querySelector('.additional-div');
-
-    showAdditionalDivBtn.addEventListener('click', function() {
-      additionalDiv.style.display = 'block';
-      showTab(0);
-    });
+  
   </script>
 </body>
 </html>

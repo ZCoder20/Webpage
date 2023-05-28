@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Blue Theme Page</title>
+  <script src="./JS/script.js"></script>
+  <script src="./JS/loginpop.js"></script>
+  <link rel="stylesheet" type="text/css" href="./CSS/loginpop.css">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+</head>
+<body>
+<div>
+    <div>
+      <input type="button" id="crossbutton" OnClick="closepopup();" value="X">
+    <form action="">
+      <div class="row">
+        
+        <h2 style="text-align:center">Login with Social Media or Manually</h2>
+        <div class="vl">
+          <span class="vl-innertext">or</span>
+        </div>
+  
+        <div class="col">
+          <a href="#" class="fb btn">
+            <i class="fa fa-facebook fa-fw"></i> Login with Facebook
+           </a>
+          <a href="#" class="twitter btn">
+            <i class="fa fa-twitter fa-fw"></i> Login with Twitter
+          </a>
+          <a href="#" class="google btn"><i class="fa fa-google fa-fw">
+            </i> Login with Google+
+          </a>
+        </div>
+  
+        <div class="col">
+          <div class="hide-md-lg">
+            <p>Or sign in manually:</p>
+          </div>
+  
+          <input type="text" name="username" placeholder="Username" required>
+          <input type="password" name="password" placeholder="Password" required>
+          <input type="submit" value="Login">
+        </div>
+        
+      </div>
+    </form>
+  </div>
+  
+  <div >
+    <div class="row">
+      <div class="col">
+       <input type="button" id="signup" value="Sign Up" onclick="openregister();"/>
+      </div>
+      <div class="col">
+        <input type="button" id="signup" value="Forgot password?"/>
+       
+      </div>
+    </div>
+  </div>
+  </div>
+</body></html>
