@@ -1,3 +1,4 @@
+const jsonObject = {};
 // Example function to fetch and display dynamic images
 function myFunction() {
     
@@ -73,10 +74,7 @@ imageUrls.forEach(url => {
 }*/
 
 
-function myFunction()
-{
 
-}
 
 function clickimage(index,name,emp,total,tl,tv,tp) {
   var image = index;
@@ -89,6 +87,14 @@ function clickimage(index,name,emp,total,tl,tv,tp) {
     var parameter6 = tv;
     var parameter7 = tl;
 
+    jsonObject.name = 'John';
+  jsonObject.age = 30;
+  jsonObject.email = 'john@example.com';
+    const updatedJsonString = JSON.stringify(jsonObject);
+
+// Save the updated JSON string back to localStorage
+localStorage.setItem('myData', updatedJsonString);
+
     
     var url = 'details.html';
     url += '?param1=' + encodeURIComponent(parameter1);
@@ -98,6 +104,8 @@ function clickimage(index,name,emp,total,tl,tv,tp) {
     url += '&param5=' + encodeURIComponent(parameter5);
     url += '&param6=' + encodeURIComponent(parameter6);
     url += '&param7=' + encodeURIComponent(parameter7);
+    url += '&param8=' + encodeURIComponent(jsonObject);
+    
   
    
     window.open(url, '_blank');

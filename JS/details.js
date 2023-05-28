@@ -11,6 +11,14 @@ window.addEventListener('DOMContentLoaded', function() {
     var totalv = params.get('param5');
     var ttotall = params.get('param6');
     var totalp = params.get('param7');
+ 
+    const storedJsonString = localStorage.getItem('myData');
+this.alert(storedJsonString);
+// Convert the string back to a JSON object
+const storedJsonObject = JSON.parse(storedJsonString);
+    
+    alert(storedJsonObject.name);
+    alert(storedJsonObject.age);
     
    
   

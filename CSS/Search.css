@@ -2,9 +2,10 @@
     
     margin: 0px auto;
     padding: 0px;
-    background-color: #a4b3bb;
-    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+    background-color: #ffffff;
+    
     border: 0px solid #a4b3bb;
+    
     width:100%;
     align-items: center;
     justify-content: center;
@@ -32,15 +33,15 @@
     display: flex;
     justify-content: center;
     align-items: center;
-    border: 0px solid #a4b3bb;
+    border: 0px solid #ffffff;
   }
   .search-bar {
     /* Styles for the search bar */
   }
 
   .ddlook{
-    width: 15%;
-    border: 2px solid #a4b3bb;
-    background-color: #ffffff;
+    width: auto;
+    border: 2px solid #70c3f0;
+    background-color: #dde6ea;
     margin-right: 2px;;
   }

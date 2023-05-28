@@ -20,7 +20,7 @@
     overflow-x: auto;
     width:1000%;
     padding: 20px;
-    border: 0px solid #c9d5dc;
+    border: 1px solid #c9d5dc;
   }
   
   .menu-item {
@@ -31,6 +31,7 @@
     height: 50px; 
     margin-right: 10px; 
     cursor: pointer;
+    border: 2px solid #70c3f0;
   }
 
   .scroll-buttons {
@@ -61,7 +62,8 @@
 
 .menu {
   display: flex;
-  background-color: #a4b3bb;
+  background-color: #ffffff;
+  
   padding: 1px;
   align-self: center;
   align-items: center;

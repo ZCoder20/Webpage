@@ -1,4 +1,13 @@
+
+
 $(document).ready(function() {
+    
+
+    const jsonString2 = localStorage.getItem('webdata');
+
+    // Convert the JSON string back to a JavaScript object
+    const myData2 = JSON.parse(jsonString2);
+     alert(myData2.user.firstname)
     // Disable submit button initially
     $('#submitBtn').prop('disabled', true);
 
@@ -43,8 +52,6 @@ $(document).ready(function() {
             formObject[pair[0]] = pair[1];
         }
 
-
-alert(formData);
         var dropdown1 = document.getElementById('dropdown3');
         var dropdown2 = document.getElementById('dropdown2');
         formObject.dropdown2 = dropdown1.value;
@@ -54,8 +61,6 @@ alert(formData);
         var photoUpload = document.getElementById('photoUpload');
         formObject.photoUpload = photoUpload.files[0].name;
 
-
-        alert(JSON.stringify(formObject, null, 2));
 
         // Make API call
         $.ajax({
