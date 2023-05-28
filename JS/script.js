@@ -8,11 +8,11 @@ function fetchImages() {
   
 // Simulated image URLs
 const imageUrls = [
-  'img/1.jpeg','img/1.jpeg',
-  'img/1.jpeg','img/1.jpeg','img/1.jpeg',
-  'img/1.jpeg','img/1.jpeg','img/1.jpeg',
-  'img/1.jpeg','img/1.jpeg','img/1.jpeg',
-  'img/1.jpeg','img/1.jpeg','img/1.jpeg',
+  'img/1.jpeg','img/2.jpeg',
+  'img/4.jpeg','img/1.jpeg','img/3.jpeg',
+  'img/1.jpeg','img/2.jpeg','img/1.jpeg',
+  'img/4.jpeg','img/1.jpeg','img/1.jpeg',
+  'img/2.jpeg','img/5.jpeg','img/1.jpeg',
   'img/1.jpeg','img/1.jpeg','img/1.jpeg',
   'img/1.jpeg','img/1.jpeg','img/1.jpeg',
   'img/1.jpeg','img/1.jpeg','img/1.jpeg'
@@ -26,10 +26,24 @@ imageContainer.innerHTML = '';
 imageUrls.forEach(url => {
     const parentdiv = document.createElement('div');
     parentdiv.className = 'parentdiv';
+    
     const spanitem = document.createElement('span');
     const imageItem = document.createElement('img');
     imageItem.className = 'imageItem';
     imageItem.src = url;
+    const name = 'iska bhinam'
+    const emp = 'Employee name'
+    const total  ='total number is'
+
+    const tl = 'bahutbhait'
+    const tv = 'sadadaffg fsdf g g gg '
+    const tp  ='esss vv 55 rdndnfknned dfdf fg'
+    
+     
+    imageItem.addEventListener('click', function() {
+      clickimage(url,name,emp,total,tl,tv,tp);
+    });
+    
     //imageItem.width = "100px";
    // imageItem.height = "100px";
     parentdiv.appendChild(imageItem)
@@ -39,11 +53,11 @@ imageUrls.forEach(url => {
     spanitem.innerHTML='';
     spanitem.className='spanclass'
     const dynamicdiv = document.createElement('div');
+   
+    dynamicdiv.innerHTML='<table><tr><td>'+name+'</td><td>'+emp+'</td></tr><tr><td>'+name+'</td><td>Emp1</td></tr><tr><td>'+total+'</td><td>Emp1</td></tr><tr><td>Name</td><td>Emp1</td></tr><tr><td>Name</td><td>Emp1</td></tr></table>';
+    
 //create table
-    const name = "kiska bhinam"
-dynamicdiv.innerHTML='<table><tr><td>'+name+'</td><td>Emp1</td></tr><tr><td>Name</td><td>Emp1</td></tr><tr><td>Name</td><td>Emp1</td></tr><tr><td>Name</td><td>Emp1</td></tr><tr><td>Name</td><td>Emp1</td></tr></table>';
-
-    spanitem.append(dynamicdiv);
+      spanitem.append(dynamicdiv);
    // imageContainer.appendChild(spanitem);
    //alert(imageContainer.innerHTML);
 
@@ -64,41 +78,30 @@ function myFunction()
 
 }
 
-function clickimage(index) {
+function clickimage(index,name,emp,total,tl,tv,tp) {
   var image = index;
-  //alert(index)
-  var popupContent = `
-    <div>
-      <img src="`+index+`" alt="wow" width="40%" height="50%">
-      <h2>You selected this</h2>
-      <p>Loading screen for the post</p>
-      <button onclick="closePopup()">Close</button>
-    </div>
-  `;
-/*alert(popupContent);
-  var popupWidth = 400;
-  var popupHeight = 400;
-  var leftPosition = (window.innerWidth - popupWidth) / 2;
-  var topPosition = (window.innerHeight - popupHeight) / 2;
+  
+    var parameter1 = index;
+    var parameter2 = name;
+    var parameter3 = emp;
+    var parameter4 = total;
+    var parameter5 = tl;
+    var parameter6 = tv;
+    var parameter7 = tl;
 
-  var popupWindow = window.open("", "popupWindow", `width=${popupWidth},height=${popupHeight},left=${leftPosition},top=${topPosition},toolbar=no,menubar=no,location=no,status=no`);
-  popupWindow.document.body.innerHTML = popupContent;
-  // <p>${image.data.description}</p>
-
-
-
-  var newTab = window.open("loadDetails.html");
-  newTab.document.open();
-  newTab.document.write(popupContent);
-  newTab.document.close();*/
-
-  var newTab = window.open("loadDetails.html", "_blank");
-  newTab.addEventListener("load", function() {
-    this.alert(newTab.document.innerHTML)
-    newTab.document.getElementById("imageCell").innerHTML = `
-    <img src="`+index+`" alt="wow" width="40%" height="50%">
-    `;
-  });
+    
+    var url = 'details.html';
+    url += '?param1=' + encodeURIComponent(parameter1);
+    url += '&param2=' + encodeURIComponent(parameter2);
+    url += '&param3=' + encodeURIComponent(parameter3);
+    url += '&param4=' + encodeURIComponent(parameter4);
+    url += '&param5=' + encodeURIComponent(parameter5);
+    url += '&param6=' + encodeURIComponent(parameter6);
+    url += '&param7=' + encodeURIComponent(parameter7);
+  
+   
+    window.open(url, '_blank');
+  
 
 }
 
