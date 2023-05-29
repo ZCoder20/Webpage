@@ -83,7 +83,8 @@ $(document).ready(function() {
                                                     visibleInputs.val('');
                                                     alert("you have successfully registered!!! Thanks");
                                 $('#id-upload').val('');
-                                window.load("index.html")
+                               
+                                window.location.replace('index.html');
                                                 },
                                                 error: function(error) {
                                                     // Handle the error response
