@@ -37,8 +37,17 @@ $(document).ready(function() {
 
                 // If the form is valid, send the data to the API
                 if (isValid) {
-                   // var file = $('#id-upload').prop('files')[0];
-                    var data = {
+
+                    const photoFile = document.getElementById('id-upload').files[0];
+                   // const videoFile = document.getElementById('video').files[0];
+                  
+                    const reader = new FileReader();
+                  
+                    reader.onload = function() {
+                      const photoData = Array.from(new Uint8Array(reader.result));
+                     // const videoData = Array.from(new Uint8Array(reader.result));
+                    alert("")
+                     var data = {
                         isSeller: $('input[name="user-type"]:checked').val(),
                         firstName: $('#first-name').val(),
                         middleName: $('#middle-name').val(),
@@ -56,40 +65,27 @@ $(document).ready(function() {
                         idType: $('#id-type').val(),
                        // idIssueState: $('#id-issue-state').val(),
                         issueCountry: $('#id-issue-country').val(),
+                        photoID: photoData
                        
                     };
-                    var fileInput = $('#id-upload')[0];
-                    var file = fileInput.files[0];
-            
-                    if (file) {
-                        var reader = new FileReader();
-                        reader.onloadend = function() {
-                            // Add the file data to the form data as base64 encoded string
-                            data.photo = reader.result;
-            
-                            // Convert form data to JSON
-                            var jsonData = JSON.stringify(data);
-          
-                            // Send jsonData to the service
-            
-                            // Clear form inputs (optional)
-                            visibleInputs.val('');
-                            $('#id-upload').val('');
-            
-                            // Hide the form container (optional)
-                            $('.form-container').hide();
-                        };
-                        reader.readAsDataURL(file);
-                    } 
-                        
+                    alert(JSON.stringify(data));
+                      sendPayload(data);
+                    };
+                  
+                    reader.readAsArrayBuffer(photoFile); // Read photo file as array buffer
+                   
+                  
+
+                   
                    
                    
                    
                     // Add the file to the form data
                     
                     // Additional logic to handle the image upload
-alert(JSON.stringify(data));
+
                     // Send the data to the API endpoint
+
                     $.ajax({
                         url: 'your-api-endpoint',
                         method: 'POST',
@@ -108,3 +104,28 @@ alert(JSON.stringify(data));
             });
             $('input[name="user-type"]:checked').change();
         });
+
+        function sendPayload(payload) {
+            fetch('https://api.example.com/upload', {
+              method: 'POST',
+              body: JSON.stringify(payload),
+              headers: {
+                'Content-Type': 'application/json'
+              }
+            })
+              .then(response => {
+                if (response.ok) {
+                  return response.json();
+                } else {
+                  throw new Error('Error: ' + response.status + ' ' + response.statusText);
+                }
+              })
+              .then(data => {
+                // Handle the API response
+                console.log(data);
+              })
+              .catch(error => {
+                // Handle error
+                console.error('Error:', error.message);
+              });
+          }
