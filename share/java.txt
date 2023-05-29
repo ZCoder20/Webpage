@@ -1,0 +1,148 @@
+Create the Person model class:
+
+
+import javax.persistence.*;
+
+@Entity
+@Table(name = "persons")
+public class Person {
+    @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    private Long id;
+
+    private String firstName;
+    private String lastName;
+    private String imagePath;
+
+    // Constructors, getters, and setters
+}
+
+
+
+Create the PersonRepository interface:
+
+import org.springframework.data.jpa.repository.JpaRepository;
+
+public interface PersonRepository extends JpaRepository<Person, Long> {
+}
+
+
+
+Create the PersonService class:
+
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Service;
+import org.springframework.web.multipart.MultipartFile;
+
+import java.io.IOException;
+import java.nio.file.Files;
+import java.nio.file.Path;
+import java.nio.file.Paths;
+
+@Service
+public class PersonService {
+    private static final String UPLOAD_FOLDER = "/path/to/upload/folder"; // Replace with the actual upload folder path
+
+    private final PersonRepository personRepository;
+
+    @Autowired
+    public PersonService(PersonRepository personRepository) {
+        this.personRepository = personRepository;
+    }
+
+    public void savePersonWithImage(MultipartFile imageFile, String firstName, String lastName) throws IOException {
+        // Save the image file to the upload folder
+        String fileName = imageFile.getOriginalFilename();
+        String filePath = UPLOAD_FOLDER + fileName;
+        byte[] imageBytes = imageFile.getBytes();
+        Path path = Paths.get(filePath);
+        Files.write(path, imageBytes);
+
+        // Create a new person entity with the details
+        Person person = new Person();
+        person.setFirstName(firstName);
+        person.setLastName(lastName);
+        person.setImagePath(filePath);
+
+        // Save the person entity to the database
+        personRepository.save(person);
+    }
+}
+
+
+
+
+
+
+
+
+
+====
+
+Create the PersonController class:
+
+
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.HttpStatus;
+import org.springframework.http.ResponseEntity;
+import org.springframework.web.bind.annotation.*;
+import org.springframework.web.multipart.MultipartFile;
+
+import java.io.IOException;
+
+@RestController
+@RequestMapping("/persons")
+public class PersonController {
+    private final PersonService personService;
+
+    @Autowired
+    public PersonController(PersonService personService) {
+        this.personService = personService;
+    }
+
+    @PostMapping
+    public ResponseEntity<String> createPerson(
+            @RequestParam("firstName") String firstName,
+            @RequestParam("lastName") String lastName,
+            @RequestParam("imageFile") MultipartFile imageFile) {
+        try {
+            personService.savePersonWithImage(imageFile, firstName, lastName);
+            return ResponseEntity.ok("Person created successfully.");
+        } catch (IOException e) {
+            return ResponseEntity.status(HttpStatus.INTERNAL_SERVER_ERROR).body("Error occurred during image upload.");
+        }
+    }
+}
+
+
+
+
+
+
+
+
+
+Configure the database connection in your application.properties or application.yml file:
+
+
+
+spring.datasource.url=jdbc:mysql://localhost:3306/db_name
+spring.datasource.username=db_username
+spring.datasource.password=db_password
+spring.jpa.hibernate.ddl-auto=update
+
+
+
+
+
+
+
+Replace db_name, db_username, and db_password with your database credentials.
+
+Run the Spring Boot application. It will start a web server listening on a specified port.
+
+You can now send a POST request to http://localhost:<port>/persons with the firstName, lastName, and imageFile parameters to create a person with an image file. The image file will be saved in the specified upload folder, and the person details will be stored in the database.
+
+Make sure to update the UPLOAD_FOLDER constant in the PersonService class with the actual path where you want to store the uploaded image files.
+
+Remember to handle exception scenarios, add error handling, and perform necessary validations based on your specific requirements.
