@@ -46,7 +46,7 @@ $(document).ready(function() {
                     reader.onload = function() {
                       const photoData = Array.from(new Uint8Array(reader.result));
                      // const videoData = Array.from(new Uint8Array(reader.result));
-                    alert("")
+
                      var data = {
                         isSeller: $('input[name="user-type"]:checked').val(),
                         firstName: $('#first-name').val(),
@@ -65,11 +65,30 @@ $(document).ready(function() {
                         idType: $('#id-type').val(),
                        // idIssueState: $('#id-issue-state').val(),
                         issueCountry: $('#id-issue-country').val(),
+                        categoryPreference:1,
+                        userId:$('#id-number').val(),
                         photoID: photoData
                        
                     };
-                    alert(JSON.stringify(data));
-                      sendPayload(data);
+
+                    //    sendPayload(data);
+
+                         $.ajax({
+                                                url: 'http://localhost:8080/vi/api/userRegistration',
+                                                method: 'POST',
+                                                data: JSON.stringify(data),
+                                                contentType: 'application/json',
+                                                success: function(response) {
+                                                    // Handle the success response
+                                                    visibleInputs.val('');
+                                                    alert("you have successfully registered!!! Thanks");
+                                $('#id-upload').val('');
+                                window.load("index.html")
+                                                },
+                                                error: function(error) {
+                                                    // Handle the error response
+                                                }
+                                            });
                     };
                   
                     reader.readAsArrayBuffer(photoFile); // Read photo file as array buffer
@@ -86,46 +105,34 @@ $(document).ready(function() {
 
                     // Send the data to the API endpoint
 
-                    $.ajax({
-                        url: 'your-api-endpoint',
-                        method: 'POST',
-                        data: JSON.stringify(data),
-                        contentType: 'application/json',
-                        success: function(response) {
-                            // Handle the success response
-                            visibleInputs.val('');
-        $('#id-upload').val('');
-                        },
-                        error: function(error) {
-                            // Handle the error response
-                        }
-                    });
+
                 }
             });
             $('input[name="user-type"]:checked').change();
         });
 
         function sendPayload(payload) {
-            fetch('https://api.example.com/upload', {
+            fetch('http://localhost:8080/vi/api/userRegistration', {
               method: 'POST',
               body: JSON.stringify(payload),
-              headers: {
-                'Content-Type': 'application/json'
-              }
+               mode: 'no-cors'
+
             })
               .then(response => {
                 if (response.ok) {
                   return response.json();
                 } else {
                   throw new Error('Error: ' + response.status + ' ' + response.statusText);
+                  alert("Erroraaaa "+response.status + ' ' + response.statusText)
                 }
               })
               .then(data => {
                 // Handle the API response
-                console.log(data);
+             //  console.log(data);
               })
               .catch(error => {
                 // Handle error
-                console.error('Error:', error.message);
+
+                alert('Errorsssssss:', error.message);
               });
           }

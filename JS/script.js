@@ -165,7 +165,3 @@ function closePopup() {
   </div>
 </div>`
 
-loadinnerlog()
-{
-  
-}
