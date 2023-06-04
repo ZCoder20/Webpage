@@ -31,9 +31,9 @@
     <div class="menu-container">
      
       <div width="100%" class="menu">
-        <img src="img/icon2.svg" alt="Image 1" class="menu-item" onclick="fetchImages()">
-        <img src="img/icon3.svg" alt="Image 1" class="menu-item" onclick="fetchImages()">
-        <img src="img/icon4.svg" alt="Image 1" class="menu-item" onclick="fetchImages()">
+        <img src="img/icon2.svg" alt="Image 1" class="menu-item" onclick="fetchImages('1')">
+        <img src="img/icon3.svg" alt="Image 1" class="menu-item" onclick="fetchImages('3')">
+        <img src="img/icon4.svg" alt="Image 1" class="menu-item" onclick="fetchImages('2')">
         <img src="img/icon5.svg" alt="Image 1" class="menu-item" onclick="fetchImages()">
         <img src="img/icon6.svg" alt="Image 1" class="menu-item" onclick="fetchImages()">
         <img src="img/icon.png" alt="Image 1" class="menu-item" onclick="fetchImages()">
@@ -73,43 +73,43 @@
      
         <div id="Searchbox" style="width: 90%; border: 0px;align-items: center;">
           <div class="searchcontainer" style="width: 80%;align-self: center;">
-              <select id="dropdown1" class="ddlook">
-                <option disabled selected>Slect Price Range</option>
-                <option value="option1">fjhsfasfhfdafadjksf</option>
-                <option value="option2">fjhsfasfhfdafadjksf 2</option>
-                <option value="option3">dsfghbbhbbh 3</option>
+              <select id="ddlplat" name="ddlplat" class="ddlook">
+                <option value="" disabled selected>Slect Price Range</option>
+                <option value="YT">YT</option>
+                <option value="TT">TT</option>
+                <option value="IG">IG</option>
               </select>
               
-              <select id="dropdown2" class="ddlook">
-                <option disabled selected>Slect Category</option>
-                <option value="option1">Option 1</option>
-                <option value="option2">Option 2</option>
-                <option value="option3">Option 3</option>
+              <select id="ddlcat" name="ddlcat" class="ddlook">
+                <option value="" disabled selected>Slect Category</option>
+                <option value="1">Cat 1</option>
+                <option value="2">Cat 2</option>
+                <option value="3">Cat 3</option>
               </select>
               
-              <select id="dropdown3" class="ddlook">
-                <option disabled selected>Slect Platform</option>
-                <option value="option1">Option 1</option>
-                <option value="option2">Option 2</option>
-                <option value="option3">Option 3</option>
+              <select id="ddllang" name="ddllang" class="ddlook">
+                <option value="" disabled selected>Select Platform</option>
+                <option value="Hindi">Hindi</option>
+                <option value="English">English</option>
+                <option value="Spanish">Spanish</option>
               </select>
               
-              <select id="dropdown4" class="ddlook">
-                <option disabled selected>Slect No of sub</option>
-                <option value="option1">gggjgjgjgjgjgjg 1</option>
-                <option value="option2">Option 2</option>
-                <option value="option3">Option 3</option>
+              <select id="ddlprice" name="ddlprice" class="ddlook">
+                <option value="0" disabled selected>Slect No of sub</option>
+                <option value="22">gggjgjgjgjgjgjg 1</option>
+                <option value="44">Option 2</option>
+                <option value="2">Option 3</option>
               </select>
               
-              <select id="dropdown5" class="ddlook">
-                <option disabled selected>Slect No of L</option>
-                <option value="option1">Option 1</option>
-                <option value="option2">Option 2</option>
-                <option value="option3">Option 3</option>
+              <select id="ddlts" name="ddlts" class="ddlook">
+                <option value="0" disabled selected>Slect No of L</option>
+                <option value="1">Option 1</option>
+                <option value="2">Option 2</option>
+                <option value="3">Option 3</option>
               </select>
               
              
-              <button id="searchButton" onclick="fetchImages()">Search</button>
+              <button id="searchButton" onclick="SearchImages()">Search</button>
             
           
       </div>

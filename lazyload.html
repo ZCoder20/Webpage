@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Lazy Loading Images from AWS S3</title>
+  <style>
+    .image-container {
+      width: 100%;
+      height: 400px;
+      overflow: auto;
+    }
+    .image-container img {
+      display: block;
+      margin: 10px auto;
+      width: 100%;
+      max-width: 500px;
+      height: auto;
+    }
+    .placeholder {
+      background-color: #f2f2f2;
+      height: 200px;
+    }
+  </style>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+  <script>
+    $(document).ready(function() {
+      const imagePaths = [
+        "/api/images/1", // Replace with your Spring Boot endpoint that provides S3 image paths
+        "/api/images/2",
+        "/api/images/3",
+        // Add more image paths as needed
+      ];
+      
+      const loadImage = (imagePath, imgElement) => {
+        const xhr = new XMLHttpRequest();
+        xhr.open("GET", imagePath, true);
+        xhr.responseType = "blob";
+        
+        xhr.onload = function() {
+          if (this.status === 200) {
+            const blob = this.response;
+            const url = URL.createObjectURL(blob);
+            imgElement.setAttribute("src", url);
+          }
+        };
+        
+        xhr.send();
+      };
+      
+      const loadImages = () => {
+        imagePaths.forEach((imagePath) => {
+          const img = document.createElement("img");
+          img.setAttribute("src", "");
+          img.classList.add("lazy-image");
+          document.getElementById("image-container").appendChild(img);
+          loadImage(imagePath, img);
+        });
+      };
+      
+      const lazyLoadImages = () => {
+        const lazyImages = document.querySelectorAll(".lazy-image");
+        
+        lazyImages.forEach((lazyImage) => {
+          const observer = new IntersectionObserver((entries, observer) => {
+            entries.forEach((entry) => {
+              if (entry.isIntersecting) {
+                const img = entry.target;
+                loadImage(img.getAttribute("data-src"), img);
+                img.classList.remove("lazy-image");
+                observer.unobserve(img);
+              }
+            });
+          });
+          
+          observer.observe(lazyImage);
+        });
+      };
+      
+      loadImages();
+      lazyLoadImages();
+    });
+  </script>
+</head>
+<body>
+  <h1>Lazy Loading Images from AWS S3</h1>
+  
+  <div class="image-container" id="image-container">
+    <div class="placeholder"></div>
+  </div>
+</body>
+</html>
