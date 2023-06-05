@@ -37,16 +37,16 @@
         <table width="100%">
          
          
+<input type="text" name="userid">
 
-
-          <tr><td colspan="2"><label for="psttitle">Posting Title<Title></Title></label></td><td colspan="1"></td><td> <textarea id="psttitle" cols="10" name="psttitle"></textarea></td></tr>
+          <tr><td colspan="2"><label for="psttitle">Posting Title<Title></Title></label></td><td colspan="1"></td><td> <textarea id="psttitle" cols="10" name="posttitle"></textarea></td></tr>
           <tr><td colspan="4"></td></tr>
           <tr><td colspan="2"><label for="pstdetails">Posting Details</label></td><td colspan="1"></td><td> <textarea id="pstdetails" cols="40" name="pstdetails"></textarea></td></tr>
           <tr><td colspan="4"></td></tr>
-          <tr><td colspan="2"><label for="psturl">URL Address</label></td><td colspan="1"></td><td> <textarea id="psturl" cols="40" name="psturl"></textarea></td></tr>
+          <tr><td colspan="2"><label for="psturl">URL Address</label></td><td colspan="1"></td><td> <textarea id="psturl" cols="40" name="posturl"></textarea></td></tr>
           <tr><td colspan="4"></td></tr>
           <tr><td colspan="2"><label for="ts">Total Subscribers:</label></td><td colspan="1"></td><td> 
-            <select id="ts" name="ts">
+            <select id="ts" name="total_s">
               <option disabled selected>Select an option</option>
               <option value="1">0-50</option>
               <option value="2">51-100</option>
@@ -62,7 +62,7 @@
           </td></tr>
 
           <tr><td colspan="2"><label for="tv">Total Views:</label></td><td colspan="1"></td><td> 
-            <select id="tv" name="tv">
+            <select id="tv" name="total_v">
               <option disabled selected>Select an option</option>
               <option value="1">0-50</option>
               <option value="2">51-100</option>
@@ -79,7 +79,7 @@
 
           <tr><td colspan="4"></td></tr>
           <tr><td colspan="2"><label for="tl">Total Likes:</label></td><td colspan="1"></td><td> 
-            <select id="tl" name="tl">
+            <select id="tl" name="total_l">
               <option disabled selected>Select an option</option>
               <option value="1">0-50</option>
               <option value="2">51-100</option>
@@ -97,7 +97,7 @@
 
           <tr><td colspan="4"></td></tr>
           <tr><td colspan="2"><label for="tp">Total Posts:</label></td><td colspan="1"></td><td> 
-            <select id="tp" name="tp">
+            <select id="tp" name="total_p">
               <option disabled selected>Select an option</option>
               <option value="1">0-50</option>
               <option value="2">51-100</option>
@@ -114,38 +114,31 @@
 
           <tr><td colspan="4"></td></tr>
           <tr><td colspan="2"><label for="ddcat">Category</label></td><td colspan="1"></td><td> 
-            <select id="ddcat" name="ddcat">
+            <select id="ddcat" name="category">
               <option disabled selected>Select an option</option>
-              <option value="1">0-50</option>
-              <option value="2">51-100</option>
-              <option value="3">101-500</option>
-              <option value="4">501-1000</option>
-              <option value="5">1001-5000</option>
-              <option value="6">5001-10000</option>
-              <option value="7">10001-50000</option>
-              <option value="8">50001-100000</option>
-              <option value="9">100000-1000000</option>
-              <option value="10">1000000+</option>
+              <option value="1">Music</option>
+              <option value="2">Technology</option>
+              <option value="3">Art and Craft</option>
+              <option value="4">Politics</option>
+              <option value="5">Social</option>
+              <option value="6">Medical</option>
+              <option value="7">Sports</option>
+              <option value="8">Kids</option>
+              <option value="9">Spritual</option>
+              <option value="10">Dance+</option>
           </select>
           </td></tr>
 
           <tr><td colspan="2"><label for="ddplat">Platform</label></td><td colspan="1"></td><td> 
-            <select id="ddplat" name="ddplat">
+            <select id="ddplat" name="plat">
               <option disabled selected>Select an option</option>
-              <option value="1">0-50</option>
-              <option value="2">51-100</option>
-              <option value="3">101-500</option>
-              <option value="4">501-1000</option>
-              <option value="5">1001-5000</option>
-              <option value="6">5001-10000</option>
-              <option value="7">10001-50000</option>
-              <option value="8">50001-100000</option>
-              <option value="9">100000-1000000</option>
-              <option value="10">1000000+</option>
+                <option value="YT">YT</option>
+                <option value="TT">TT</option>
+                <option value="IG">IG</option>
           </select>
           </td></tr>
           <tr><td colspan="2"><label for="lang">Language</label></td><td colspan="1"></td><td> 
-            <select id="lang" name="lang">
+            <select id="lang" name="pstlang">
               <option disabled selected>Select an option</option>
               <option value="1">English</option>
               <option value="2">Hindi</option>
@@ -162,7 +155,7 @@
 
           <tr><td colspan="4"></td></tr>
           <tr><td colspan="2"><label for="photoUpload">Please upload thumbnail</label></td><td colspan="1"></td><td> 
-            <input type="file" id="photoUpload" name="photoUpload">
+            <input type="file" id="photoUpload" name="imgpath">
           </td></tr>
           <tr><td colspan="4"></td></tr>
           <tr><td colspan="4"><div id="photoPreview"></div></td>
@@ -173,20 +166,20 @@
   
           
   
-            <tr><td colspan="2"><label for="pstprice">Price per hour</label></td><td colspan="1"></td><td> <input type="text" id="pstprice"  name="pstprice"/></td></tr>
+            <tr><td colspan="2"><label for="pstprice">Price per hour</label></td><td colspan="1"></td><td> <input type="text" id="pstprice"  name="price"/></td></tr>
             <tr><td colspan="4"></td></tr>
     
-            <tr><td colspan="2"><label for="chnlage">Channel Age</label></td><td colspan="1"></td><td> <input type="text" id="chnlage"  name="chnlage"/></td></tr>
+            <tr><td colspan="2"><label for="chnlage">Channel Age</label></td><td colspan="1"></td><td> <input type="text" id="chnlage"  name="smage"/></td></tr>
             <tr><td colspan="4"></td></tr>
-            <tr><td colspan="2"><label for="rdomon">Channel Monatize ?</label></td><td colspan="1"></td><td><label for="rdomon"><input type="radio" id="rdomon"  name="rdomon"/>Yes</label>
-            <label for="rdomon1"><input type="radio" id="rdomon1"  name="rdomon"/>No</label>
+            <tr><td colspan="2"><label for="rdomon">Channel Monatize ?</label></td><td colspan="1"></td><td><label for="rdomon"><input type="radio" id="rdomon" radiogroup="xx"  name="monot" value="true"/>Yes</label>
+            <label for="rdomon1"><input type="radio" id="rdomon1" radiogroup="xx" value="false"  name="monot"/>No</label>
             </td></tr>
             <tr><td colspan="4"></td></tr>
     
-            <tr><td colspan="2"><label for="restr">Any Restriction</label></td><td colspan="1"></td><td> <label for="restr"><input type="checkbox" id="restr" name="restr"/>Yes</label></td></tr>
+            <tr><td colspan="2"><label for="restr">Any Restriction</label></td><td colspan="1"></td><td> <label for="restr"><input type="checkbox" value="true" id="restr" name="isrestric"/>Yes</label></td></tr>
             <tr><td colspan="4"></td></tr>
     
-            <tr><td colspan="2"><label for="rsttext">Restriction Details</label></td><td colspan="1"></td><td> <input type="text" id="rsttext" placeholder="Please specify restrictions here" name="rsttext"/></td></tr>
+            <tr><td colspan="2"><label for="rsttext">Restriction Details</label></td><td colspan="1"></td><td> <input type="text" id="rsttext" placeholder="Please specify restrictions here" name="rsn_rest"/></td></tr>
             <tr><td colspan="4"></td></tr>
             
 
@@ -212,8 +205,10 @@
         
 
         <br>
-        <input type="submit" id="submitBtn" value="Submit" onclick="submitForm()">
-        <button id="submit" onclick="submitForm()">Submit</button>
+        <input type="submit" id="submitBtn" value="Submit" onclick="submitpost()">
+        <button id="submit" onclick="submitpost()">Submit</button>
+
+       // savePost
     </form>
 
 

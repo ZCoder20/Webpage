@@ -6,7 +6,7 @@ $(document).ready(function() {
     // Convert the JSON string back to a JavaScript object
     const myData2 = JSON.parse(jsonString2);
    
-     alert(myData2.user.firstname)
+    // alert(myData2.user.firstname)
     // Disable submit button initially
     $('#submitBtn').prop('disabled', true);
 
@@ -120,3 +120,37 @@ function submitForm() {
     };
     xhr.send(formData);
   }
+
+  function submitpost()
+  {
+    var form = document.getElementById('myForm');
+    var formData = new FormData(form);
+
+    fetch('http://localhost:8080/vi/api/savePost', {
+        method: 'POST',
+        body: formData
+    })
+        .then(response => {
+
+            if (response.ok) {
+
+
+
+            } else {
+                throw new Error('Error: ' + response.status + ' ' + response.statusText);
+                alert("Erroraaaa "+response.status + ' ' + response.statusText)
+            }
+        })
+        .then(data => {
+            alert(data);
+
+            // Do something with the response data
+        })
+        .catch(error => {
+            console.error('Error submitting form data:', error);
+        });
+}
+
+  
+
+  // savePost

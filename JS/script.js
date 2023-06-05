@@ -43,6 +43,7 @@ async function SearchImages()
 
                 // Perform further operations with each array element
                 // ...
+
                 getData(imageUrls);
             });
             //  var specificElement = data.totalF4[0];
@@ -58,9 +59,30 @@ async function SearchImages()
 
 
 }
+function fetchImages(cate)
+{
+
+    category = document.getElementById('ddlcat');
+    palt = document.getElementById('ddlplat');
+    price = document.getElementById('ddlprice');
+    ts = document.getElementById('ddlts');
+    lang = document.getElementById('ddllang');
+    category.value = '';
+    palt.value = '';
+    lang.value = '';
+    price.value=0;
+    ts.value=0;
+    asyncfetchImages(cate)
+}
+
+async function asyncfetchImages(cat) {
 
 
-async function fetchImages(cat) {
+
+
+
+
+
     const imageUrls =[];
     fetch(`http://localhost:8080/vi/api/byCategory?category=${cat}`)
         .then(response => response.json())
@@ -113,7 +135,9 @@ var Emp1=''
     const tv = 'sadadaffg fsdf g g gg '
     const tp  ='esss vv 55 rdndnfknned dfdf fg'
     imageContainer.innerHTML = '';
+    count =0;
     for (const x in myObj) {
+        count =1;
         if(x=='imgpath')
         {
             url =('img/'+myObj[x]);
@@ -170,6 +194,10 @@ var Emp1=''
 
 
     }
+    if(count ==0)
+    {
+        imageContainer.innerHTML = '<h1><p>There is no post for the search criteria</p></h1>';
+    }
 }
 
 function getData(imageUrls,name,emp,Emp1,total) {
@@ -195,8 +223,10 @@ const imageUrls = [
 
 const imageContainer = document.getElementById('imageContainer');
 imageContainer.innerHTML = '';
-
+var count =0;
+   // alert("hello")
 imageUrls.forEach(url => {
+    count =1;
     const parentdiv = document.createElement('div');
     parentdiv.className = 'parentdiv';
     
@@ -235,7 +265,11 @@ imageUrls.forEach(url => {
    //alert(imageContainer.innerHTML);
 
 });
+    if(count ==0)
+    {
 
+        imageContainer.innerHTML = '<h1><p>There is no post for the search criteria</p></h1>';
+    }
 }
 /*imageUrls.forEach(url => {
   const imageItem = document.createElement('div');
