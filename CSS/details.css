@@ -38,6 +38,11 @@ input.invalid {
   display: none;
 }
 
+/* Hide all steps by default: */
+.tab1 {
+  display: none;
+}
+
 button {
   background-color: #04AA6D;
   color: #ffffff;

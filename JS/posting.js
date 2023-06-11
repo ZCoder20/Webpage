@@ -1,5 +1,5 @@
 $(document).ready(function() {
-    
+
 
     const jsonString2 = localStorage.getItem('webdata');
 
@@ -125,6 +125,9 @@ function submitForm() {
   {
     var form = document.getElementById('myForm');
     var formData = new FormData(form);
+      var userId = localStorage.getItem('userid');
+alert(userId)
+      formData.append('userid', userId);
 
     fetch('http://localhost:8080/vi/api/savePost', {
         method: 'POST',

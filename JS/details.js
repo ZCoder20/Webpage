@@ -1,9 +1,11 @@
 window.addEventListener('DOMContentLoaded', function() {
+  var userId = localStorage.getItem('userId');
     
     var queryString = window.location.search;
     var params = new URLSearchParams(queryString);
     
     var image = params.get('param1');
+    alert("image  "+ image);
     var name = params.get('param2');
     var emp = params.get('param3');
     var total = params.get('param4');
@@ -11,14 +13,13 @@ window.addEventListener('DOMContentLoaded', function() {
     var totalv = params.get('param5');
     var ttotall = params.get('param6');
     var totalp = params.get('param7');
- 
-    const storedJsonString = localStorage.getItem('myData');
-this.alert(storedJsonString);
+
+  //const storedJsonString = localStorage.getItem('myData');
+
 // Convert the string back to a JSON object
-const storedJsonObject = JSON.parse(storedJsonString);
+//const storedJsonObject = JSON.parse(storedJsonString);
     
-    alert(storedJsonObject.name);
-    alert(storedJsonObject.age);
+
     
    
   

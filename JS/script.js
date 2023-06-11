@@ -30,22 +30,23 @@ async function SearchImages()
                 const myObj = JSON.parse(JSON.stringify(element));
 
 
-                for (const x in myObj) {
+                /*for (const x in myObj) {
                     if(x=='imgpath')
                     {
                         imageUrls.push('img/'+myObj[x]);
                         //alert(myObj[x])  ;
                     }
 
-                }
+                }*/
                 //  alert('Value of property1:', property1);
                 //  alert('Value of property2:', property2);
 
                 // Perform further operations with each array element
                 // ...
+                imageUrls.push(myObj);
 
-                getData(imageUrls);
             });
+            getData(imageUrls);
             //  var specificElement = data.totalF4[0];
             //   alert('Value of specific element:', specificElement);
             // Process the response data
@@ -78,11 +79,6 @@ function fetchImages(cate)
 async function asyncfetchImages(cat) {
 
 
-
-
-
-
-
     const imageUrls =[];
     fetch(`http://localhost:8080/vi/api/byCategory?category=${cat}`)
         .then(response => response.json())
@@ -93,23 +89,28 @@ async function asyncfetchImages(cat) {
                 // Access specific properties of each array element
 
                 const myObj = JSON.parse(JSON.stringify(element));
-               // Createimage(myObj);
+              //alert(JSON.stringify(element));
 
-                for (const x in myObj) {
+
+             /*   for (const x in myObj) {
                     if (x == 'imgpath') {
-                        imageUrls.push('img/' + myObj[x]);
+                      //  imageUrls.push('img/' + myObj[x]);
                         //alert(myObj[x])  ;
+                        imageUrls.push(myObj);
                     }
-                }
-
+                }*/
+                //alert("obj  "+JSON.stringify(element));
+                imageUrls.push(myObj);
                 //  alert('Value of property1:', property1);
                 //  alert('Value of property2:', property2);
 
                 // Perform further operations with each array element
                 // ...
 
-                getData(imageUrls);
+
             });
+
+            getData(imageUrls);
             //  var specificElement = data.totalF4[0];
             //   alert('Value of specific element:', specificElement);
             // Process the response data
@@ -200,7 +201,62 @@ var Emp1=''
     }
 }
 
-function getData(imageUrls,name,emp,Emp1,total) {
+
+function imagedetialsdisplay(myObj)
+{
+    const imageContainer = document.getElementById('imageContainer');
+    imageContainer.innerHTML = '';
+    var count =0;
+    for (const x in myObj) {
+        if (x == 'imgpath') {
+            imageUrls.push('img/' + myObj[x]);
+            count =1;
+            const parentdiv = document.createElement('div');
+            parentdiv.className = 'parentdiv';
+
+            const spanitem = document.createElement('span');
+            const imageItem = document.createElement('img');
+            imageItem.className = 'imageItem';
+            imageItem.src = url;
+            const name = 'iska bhinam'
+            const emp = 'Employee name'
+            const total  ='total number is'
+
+            const tl = 'bahutbhait'
+            const tv = 'sadadaffg fsdf g g gg '
+            const tp  ='esss vv 55 rdndnfknned dfdf fg'
+
+
+            imageItem.addEventListener('click', function() {
+                clickimage(url,name,emp,total,tl,tv,tp);
+            });
+
+            //imageItem.width = "100px";
+            // imageItem.height = "100px";
+            parentdiv.appendChild(imageItem)
+            parentdiv.appendChild(spanitem)
+            imageContainer.appendChild(parentdiv);
+
+            spanitem.innerHTML='';
+            spanitem.className='spanclass'
+            const dynamicdiv = document.createElement('div');
+
+            dynamicdiv.innerHTML='<table><tr><td>'+name+'</td><td>'+emp+'</td></tr><tr><td>'+name+'</td><td>Emp1</td></tr><tr><td>'+total+'</td><td>Emp1</td></tr><tr><td>Name</td><td>Emp1</td></tr><tr><td>Name</td><td>Emp1</td></tr></table>';
+
+//create table
+            spanitem.append(dynamicdiv);
+        }
+    }
+    if(count ==0)
+    {
+
+        imageContainer.innerHTML = '<h1><p>There is no post for the search criteria</p></h1>';
+    }
+
+
+}
+
+function getData(imageUrls) {
 
 
 
@@ -225,8 +281,28 @@ const imageContainer = document.getElementById('imageContainer');
 imageContainer.innerHTML = '';
 var count =0;
    // alert("hello")
-imageUrls.forEach(url => {
+imageUrls.forEach(obj => {
     count =1;
+
+    url  = 'img/'+obj.imgpath;
+    posttitle = obj.postTitle;
+    postid = obj.postId;
+    posturl = obj.postURL;
+    total_v = obj.totalF1;
+    total_s = obj.totalF2;
+    total_l = obj.totalF3;
+    total_p = obj.totalF4;
+    category = obj.category;
+    price = obj.price;
+    plat = obj.plat;
+    smname = obj.smname;
+    monot = obj.monot;
+    isrestric = obj.isrestric;
+    rsn_rest = obj.rsn_rest;
+    pstlang = obj.pstlang;
+    postdetails = obj.postDertails;
+    //alert(url);
+
     const parentdiv = document.createElement('div');
     parentdiv.className = 'parentdiv';
     
@@ -234,17 +310,9 @@ imageUrls.forEach(url => {
     const imageItem = document.createElement('img');
     imageItem.className = 'imageItem';
     imageItem.src = url;
-    const name = 'iska bhinam'
-    const emp = 'Employee name'
-    const total  ='total number is'
-
-    const tl = 'bahutbhait'
-    const tv = 'sadadaffg fsdf g g gg '
-    const tp  ='esss vv 55 rdndnfknned dfdf fg'
-    
-     
     imageItem.addEventListener('click', function() {
-      clickimage(url,name,emp,total,tl,tv,tp);
+
+      clickimage('img/'+obj.imgpath,posttitle,posturl,price,total_l,total_v,total_p,total_s,category,plat,smname,monot,isrestric,rsn_rest,pstlang,postid);
     });
     
     //imageItem.width = "100px";
@@ -257,7 +325,7 @@ imageUrls.forEach(url => {
     spanitem.className='spanclass'
     const dynamicdiv = document.createElement('div');
    
-    dynamicdiv.innerHTML='<table><tr><td>'+name+'</td><td>'+emp+'</td></tr><tr><td>'+name+'</td><td>Emp1</td></tr><tr><td>'+total+'</td><td>Emp1</td></tr><tr><td>Name</td><td>Emp1</td></tr><tr><td>Name</td><td>Emp1</td></tr></table>';
+    dynamicdiv.innerHTML='<table><tr><td>'+posttitle+'</td><td>'+posturl+'</td></tr><tr><td>'+price+'</td><td>'+total_l+'</td></tr><tr><td>'+total_s+'</td><td>'+url+'</td></tr></table>';
     
 //create table
       spanitem.append(dynamicdiv);
@@ -282,26 +350,26 @@ imageUrls.forEach(url => {
 
 
 
-function clickimage(index,name,emp,total,tl,tv,tp) {
-  var image = index;
-  
-    var parameter1 = index;
-    var parameter2 = name;
-    var parameter3 = emp;
-    var parameter4 = total;
-    var parameter5 = tl;
-    var parameter6 = tv;
-    var parameter7 = tl;
 
-    jsonObject.name = 'John';
-  jsonObject.age = 30;
-  jsonObject.email = 'john@example.com';
-    const updatedJsonString = JSON.stringify(jsonObject);
+    function clickimage(Ashu,posttitle,posturl,price,total_l,total_v,total_p,total_s,category,plat,smname,monot,isrestric,rsn_rest,pstlang,postid)
+    {
+
+    var image = Ashu;
+
+    var parameter1 = Ashu;
+    var parameter2 = posttitle;
+    var parameter3 = posturl;
+    var parameter4 = price;
+    var parameter5 = total_l;
+    var parameter6 = total_v;
+    var parameter7 = total_p;
+
+
 
 // Save the updated JSON string back to localStorage
-localStorage.setItem('myData', updatedJsonString);
 
-    
+
+       // alert(" parameter1 " +parameter1);
     var url = 'details.html';
     url += '?param1=' + encodeURIComponent(parameter1);
     url += '&param2=' + encodeURIComponent(parameter2);
@@ -310,7 +378,7 @@ localStorage.setItem('myData', updatedJsonString);
     url += '&param5=' + encodeURIComponent(parameter5);
     url += '&param6=' + encodeURIComponent(parameter6);
     url += '&param7=' + encodeURIComponent(parameter7);
-    url += '&param8=' + encodeURIComponent(jsonObject);
+    url += '&param8=' + encodeURIComponent(parameter1);
     
   
    

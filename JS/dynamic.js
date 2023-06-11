@@ -1,6 +1,7 @@
 var userlogin = false;
 // Generate the banner dynamically
 window.addEventListener('load', function() {
+    localStorage.setItem('userid', 345);
     var bannerContainer = document.getElementById('bannerContainer');
     bannerContainer.appendChild(generateBanner(false)); // Assume the user is not logged in initially
   });
@@ -9,7 +10,9 @@ window.addEventListener('load', function() {
   function generateBanner(isLoggedIn, username) {
     var banner = document.createElement('div');
     banner.classList.add('banner');
-  
+
+
+
     var logo = document.createElement('div');
     logo.classList.add('logo');
     var logoImg = document.createElement('img');
