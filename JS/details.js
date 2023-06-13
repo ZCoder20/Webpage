@@ -1,48 +1,83 @@
 window.addEventListener('DOMContentLoaded', function() {
-  var userId = localStorage.getItem('userId');
+  //var userId = localStorage.getItem('userId');
     
     var queryString = window.location.search;
     var params = new URLSearchParams(queryString);
-    
-    var image = params.get('param1');
-    alert("image  "+ image);
-    var name = params.get('param2');
-    var emp = params.get('param3');
-    var total = params.get('param4');
 
-    var totalv = params.get('param5');
-    var ttotall = params.get('param6');
-    var totalp = params.get('param7');
 
-  //const storedJsonString = localStorage.getItem('myData');
+  var encodedJsonString = '...'; // Retrieve the value from the query string
 
-// Convert the string back to a JSON object
-//const storedJsonObject = JSON.parse(storedJsonString);
-    
+  var decodedJsonString = decodeURIComponent(params.get('param2'));
+  var jsonObject = JSON.parse(decodedJsonString);
+//alert(decodedJsonString);
+  var image = params.get('param1');
 
-    
-   
-  
-  
-    var outputDiv = document.getElementById('clickedimage');
+    var psttitle = jsonObject.postTitle;//params.get('param2');
+    var pstdetails = jsonObject.postDetails;
+    var pstprice = jsonObject.price;
+    var pstpostURL = jsonObject.postURL;
+
+    var totalv = jsonObject.totalview;
+    var ttotall = jsonObject.totallike;
+    var totalp = jsonObject.totalpost;
+    var psttotals = jsonObject.totalsubs;
+var pstuserId =  jsonObject.userId;
+  var pstpostId =  jsonObject.postId;
+
+
+  var category = jsonObject.category;
+  var pstplat = jsonObject.plat;
+  var smname = jsonObject.smname;
+  var rsn_rest = jsonObject.rsn_rest;
+  var pstlang = jsonObject.pstlang;
+  var pltmono = jsonObject.monot;
+
+  var outputDiv = document.getElementById('clickedimage');
     outputDiv.innerHTML =  `<img src="`+image+`" alt="wow" width="40%" height="50%"></img>`
 
-    var outputlabel = document.getElementById('totalS');
-    var outputlabel1 = document.getElementById('name');
-    var outputlabel2 = document.getElementById('emp');
+    var price = document.getElementById('price');
+    var title = document.getElementById('title');
+    var details = document.getElementById('details');
 
     var tl = document.getElementById('tl');
     var tv = document.getElementById('tv');
     var tp = document.getElementById('tp');
+  var ts = document.getElementById('ts');
+  var posturl = document.getElementById('posturl');
+  var plat = document.getElementById('plat');
 
-    outputlabel.innerHTML =  total;
-    outputlabel1.innerHTML =  name;
-    outputlabel2.innerHTML =  emp;
-    tl.innerHTML =  totalv;
-    tv.innerHTML =  ttotall;
-    tp.innerHTML =  totalp;
-   
-    
+  var cat =document.getElementById('cat');
+
+ var lang =document.getElementById('lang');
+
+ var mono =document.getElementById('mono');
+
+
+
+  price.innerText =  pstprice;
+  title.innerText =  psttitle;
+  details.innerText =  pstdetails;
+    tl.innerText =  totalv;
+    tv.innerText =  ttotall;
+    tp.innerText =  totalp;
+  ts.innerText =  psttotals;
+  posturl.innerHTML = '<a href="'+pstpostURL+'"> Platform Link </a>';
+  plat.innerText = pstplat;
+
+  cat.innerText = category;
+  lang.innerText = pstlang;
+  mono.innerText = pltmono;
+
+
+  var userid = document.getElementById('userId');
+
+  userid.value = pstuserId;
+  var postid = document.getElementById('postId');
+
+  postid.value = pstpostId;
+
+
+
   });
 
   var currentTab = 0; // Current tab is set to be the first tab (0)
@@ -95,7 +130,7 @@ function validateForm() {
   // A loop that checks every input field in the current tab:
   for (i = 0; i < y.length; i++) {
     // If a field is empty...
-    if (y[i].value == "") {
+    if (y[i].value == "" && y[i].id!='userId') {
       alert(y[i].id);
       alert(y[i].value);
       // add an "invalid" class to the field:
@@ -134,7 +169,7 @@ function previewset()
   const fileInput = document.getElementById('fileInput');
   const preview = document.getElementById('preview');
   const file = fileInput.files[0];
-alert(file.type);
+//alert(file.type);
   if (file) {
     const reader = new FileReader();
 
@@ -182,7 +217,7 @@ alert(file.type);
 
 fileInput.addEventListener('change', function() {
   const file = fileInput.files[0];
-alert(file.type);
+//alert(file.type);
   if (file) {
     const reader = new FileReader();
 

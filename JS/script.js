@@ -312,7 +312,7 @@ imageUrls.forEach(obj => {
     imageItem.src = url;
     imageItem.addEventListener('click', function() {
 
-      clickimage('img/'+obj.imgpath,posttitle,posturl,price,total_l,total_v,total_p,total_s,category,plat,smname,monot,isrestric,rsn_rest,pstlang,postid);
+      clickimage('img/'+obj.imgpath,posttitle,posturl,price,total_l,total_v,total_p,total_s,category,plat,smname,monot,isrestric,rsn_rest,pstlang,postid,obj);
     });
     
     //imageItem.width = "100px";
@@ -351,7 +351,7 @@ imageUrls.forEach(obj => {
 
 
 
-    function clickimage(Ashu,posttitle,posturl,price,total_l,total_v,total_p,total_s,category,plat,smname,monot,isrestric,rsn_rest,pstlang,postid)
+    function clickimage(Ashu,posttitle,posturl,price,total_l,total_v,total_p,total_s,category,plat,smname,monot,isrestric,rsn_rest,pstlang,postid,obj)
     {
 
     var image = Ashu;
@@ -365,21 +365,22 @@ imageUrls.forEach(obj => {
     var parameter7 = total_p;
 
 
+        var jsonObject = {
+            name: 'John',
+            age: 30,
+            city: 'New York'
+        };
 
+        var jsonString = JSON.stringify(obj);
+        var encodedJsonString = encodeURIComponent(jsonString);
 // Save the updated JSON string back to localStorage
 
 
        // alert(" parameter1 " +parameter1);
     var url = 'details.html';
     url += '?param1=' + encodeURIComponent(parameter1);
-    url += '&param2=' + encodeURIComponent(parameter2);
-    url += '&param3=' + encodeURIComponent(parameter3);
-    url += '&param4=' + encodeURIComponent(parameter4);
-    url += '&param5=' + encodeURIComponent(parameter5);
-    url += '&param6=' + encodeURIComponent(parameter6);
-    url += '&param7=' + encodeURIComponent(parameter7);
-    url += '&param8=' + encodeURIComponent(parameter1);
-    
+    url += '&param2=' + encodeURIComponent(encodedJsonString);
+
   
    
     window.open(url, '_blank');
