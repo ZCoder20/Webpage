@@ -2,7 +2,9 @@
 <html>
 <head>
   <title>Rent Your Platfom</title>
- 
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
   <link rel="stylesheet" type="text/css" href="./CSS/dynamic.css">
   <link rel="stylesheet" type="text/css" href="./CSS/scrollmenu.css">
   <link rel="stylesheet" type="text/css" href="./CSS/Search.css">
@@ -13,6 +15,13 @@
   <script src="./JS/RuntimeJson.js"></script>
   <link rel="stylesheet" type="text/css" href="./CSS/loginpop.css">
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+<style>
+  @media (max-width: 600px) {
+    .container {
+      padding: 10px;
+    }
+  }
+</style>
 </head>
 <body>
     <script>
@@ -31,29 +40,24 @@
     <div class="menu-container">
      
       <div width="100%" class="menu">
-        <img src="img/icon2.svg" alt="Image 1" class="menu-item" onclick="fetchImages('1')">
-        <img src="img/icon3.svg" alt="Image 1" class="menu-item" onclick="fetchImages('3')">
-        <img src="img/icon4.svg" alt="Image 1" class="menu-item" onclick="fetchImages('2')">
-        <img src="img/icon5.svg" alt="Image 1" class="menu-item" onclick="fetchImages('3')">
-        <img src="img/icon6.svg" alt="Image 1" class="menu-item" onclick="fetchImages('4')">
-        <img src="img/icon.png" alt="Image 1" class="menu-item" onclick="fetchImages('5')">
-        <img src="img/icon2.svg" alt="Image 1" class="menu-item" onclick="fetchImages('6')">
-        <img src="img/icon3.svg" alt="Image 1" class="menu-item" onclick="fetchImages('7')">
-        <img src="img/icon4.svg" alt="Image 1" class="menu-item" onclick="fetchImages('8')">
-        <img src="img/icon5.svg" alt="Image 1" class="menu-item" onclick="fetchImages('9')">
-        <img src="img/icon6.svg" alt="Image 1" class="menu-item" onclick="fetchImages('10')">
-        <img src="img/icon2.svg" alt="Image 1" class="menu-item" onclick="fetchImages('1')">
-        <img src="img/icon3.svg" alt="Image 1" class="menu-item" onclick="fetchImages('3')">
-        <img src="img/icon4.svg" alt="Image 1" class="menu-item" onclick="fetchImages('2')">
-        <img src="img/icon5.svg" alt="Image 1" class="menu-item" onclick="fetchImages('3')">
-        <img src="img/icon6.svg" alt="Image 1" class="menu-item" onclick="fetchImages('4')">
-        <img src="img/icon.png" alt="Image 1" class="menu-item" onclick="fetchImages('5')">
-        <img src="img/icon2.svg" alt="Image 1" class="menu-item" onclick="fetchImages('6')">
-        <img src="img/icon3.svg" alt="Image 1" class="menu-item" onclick="fetchImages('7')">
-        <img src="img/icon4.svg" alt="Image 1" class="menu-item" onclick="fetchImages('8')">
-        <img src="img/icon5.svg" alt="Image 1" class="menu-item" onclick="fetchImages('9')">
-        <img src="img/icon6.svg" alt="Image 1" class="menu-item" onclick="fetchImages('10')">
-        
+        <img src="img/music.png" alt="Image 1" class="menu-item" onclick="fetchImages('1')">
+        <img src="img/Anc.png" alt="Image 1" class="menu-item" onclick="fetchImages('3')">
+        <img src="img/Technology.png" alt="Image 1" class="menu-item" onclick="fetchImages('2')">
+        <img src="img/Politics.png" alt="Image 1" class="menu-item" onclick="fetchImages('3')">
+        <img src="img/Social.png" alt="Image 1" class="menu-item" onclick="fetchImages('4')">
+        <img src="img/medical.png" alt="Image 1" class="menu-item" onclick="fetchImages('5')">
+        <img src="img/sports.png" alt="Image 1" class="menu-item" onclick="fetchImages('6')">
+        <img src="img/kids.png" alt="Image 1" class="menu-item" onclick="fetchImages('7')">
+        <img src="img/spiritual.png" alt="Image 1" class="menu-item" onclick="fetchImages('8')">
+        <img src="img/dance.png" alt="Image 1" class="menu-item" onclick="fetchImages('9')">
+        <img src="img/Stocks.png" alt="Image 1" class="menu-item" onclick="fetchImages('10')">
+        <img src="img/news.png" alt="Image 1" class="menu-item" onclick="fetchImages('1')">
+        <img src="img/gameing.png" alt="Image 1" class="menu-item" onclick="fetchImages('3')">
+        <img src="img/drama.png" alt="Image 1" class="menu-item" onclick="fetchImages('2')">
+        <img src="img/science.png" alt="Image 1" class="menu-item" onclick="fetchImages('3')">
+        <img src="img/space.png" alt="Image 1" class="menu-item" onclick="fetchImages('4')">
+
+
         
       </div>
       
@@ -62,8 +66,8 @@
     
     <div class="search-panel">
      
-        <div id="Searchbox" style="width: 90%; border: 0px;align-items: center;">
-          <div class="searchcontainer" style="width: 80%;align-self: center;">
+        <div id="Searchbox" style="width: 100%; border: 0px;align-items: center;">
+          <div class="searchcontainer" style="width: 100%;align-self: center;">
               <select id="ddlplat" name="ddlplat" class="ddlook">
                 <option value=""selected>Select Platform</option>
                 <option value="YT">YT</option>
@@ -83,6 +87,12 @@
                 <option value="8">Kids</option>
                 <option value="9">Spritual</option>
                 <option value="10">Dance+</option>
+                <option value="11">Stocks</option>
+                <option value="12">News</option>
+                <option value="13">Gaming</option>
+                <option value="14">Drama</option>
+                <option value="15">Science</option>
+                <option value="16">Space</option>
               </select>
               
               <select id="ddllang" name="ddllang" class="ddlook">
@@ -122,14 +132,14 @@
               </select>
               
              
-              <button id="searchButton" onclick="SearchImages()">Search</button>
+              <button id="searchButton" class="ddlook" onclick="SearchImages()">Search</button>
             
           
       </div>
      
     </div>
     
-    <div id="imageContainer"></div>
+    <div style="overflow-y: scroll;" id="imageContainer"></div>
     
   
   </div></div>

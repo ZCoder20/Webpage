@@ -90,6 +90,7 @@ function showTab(n) {
   //... and fix the Previous/Next buttons:
   if (n == 0) {
     document.getElementById("prevBtn").style.display = "none";
+
   } else {
     document.getElementById("prevBtn").style.display = "inline";
   }
@@ -97,6 +98,11 @@ function showTab(n) {
     document.getElementById("nextBtn").innerHTML = "Submit";
   } else {
     document.getElementById("nextBtn").innerHTML = "Next";
+    if(n==0)
+    {
+      document.getElementById("nextBtn").style.display = "none";
+    }
+
   }
   //... and run a function that will display the correct step indicator:
   fixStepIndicator(n)
@@ -159,8 +165,8 @@ function fixStepIndicator(n) {
 
 function enablenextbtn()
 {
-  
-  
+
+  document.getElementById("nextBtn").style.display = "inline";
   
 }
 

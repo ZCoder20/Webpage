@@ -1,0 +1,201 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Transaction History</title>
+    <link rel="stylesheet" type="text/css" href="./CSS/dynamic.css">
+    <style>
+        .tab-content {
+            display: none;
+        }
+    </style>
+    <script src="./JS/dynamic.js"></script>
+    <script src="./JS/scrollmenu.js"></script>
+    <script src="./JS/script.js"></script>
+    <script>
+        // Function to fetch API response and render the data in tabs
+        function fetchData() {
+            // Replace 'apiEndpoint' with the actual API endpoint to fetch the data
+            fetch('http://localhost:8080/vi/api/getorder?orderid=456756')
+                .then(response => response.json())
+                .then(data => {
+                    // Display order history tab
+
+                    const orderHistoryContainer = document.getElementById('orderHistoryTab');
+                    const orderHistoryContent = data.length > 0 ? buildOrderHistoryContent(data) : 'No order history available.';
+                    orderHistoryContainer.innerHTML = orderHistoryContent;
+
+                    // Display payment history tab
+                    document.getElementById('paymentHistory').innerHTML = data.paymentHistory;
+
+                    // Check if user is a seller
+                    if (data.userRole === 'seller') {
+                        // Display sell history tab
+                        document.getElementById('sellHistory').innerHTML = data.sellHistory;
+                        document.getElementById('sellTab').style.display = 'block';
+                    }
+                });
+        }
+        function fetchDataPayment() {
+            // Replace 'apiEndpoint' with the actual API endpoint to fetch the data
+            fetch('http://localhost:8080/vi/api/getorder?orderid=345')
+                .then(response => response.json())
+                .then(data => {
+                    // Display order history tab
+
+                    const orderHistoryContainer = document.getElementById('paymentHistoryTab');
+                    const orderHistoryContent = data.length > 0 ? buildOrderHistoryContent(data) : 'No order history available.';
+                    orderHistoryContainer.innerHTML = orderHistoryContent;
+
+                    // Display payment history tab
+                    document.getElementById('paymentHistory').innerHTML = data.paymentHistory;
+
+                    // Check if user is a seller
+                    if (data.userRole === 'seller') {
+                        // Display sell history tab
+                        document.getElementById('sellHistory').innerHTML = data.sellHistory;
+                        document.getElementById('sellTab').style.display = 'block';
+                    }
+                });
+        }
+        function fetchDatapost() {
+            // Replace 'apiEndpoint' with the actual API endpoint to fetch the data
+            fetch('http://localhost:8080/vi/api/getorder?orderid=423')
+                .then(response => response.json())
+                .then(data => {
+                    // Display order history tab
+
+                    const orderHistoryContainer = document.getElementById('sellHistoryTab');
+                    const orderHistoryContent = data.length > 0 ? buildOrderHistoryContent(data) : 'No order history available.';
+                    orderHistoryContainer.innerHTML = orderHistoryContent;
+
+                    // Display payment history tab
+                    document.getElementById('paymentHistory').innerHTML = data.paymentHistory;
+
+                    // Check if user is a seller
+                    if (data.userRole === 'seller') {
+                        // Display sell history tab
+                        document.getElementById('sellHistory').innerHTML = data.sellHistory;
+                        document.getElementById('sellTab').style.display = 'block';
+                    }
+                });
+        }
+
+        // Function to build order history content
+        function buildOrderHistoryContent(orderHistory) {
+            let content = '';
+
+            orderHistory.forEach(order => {
+                const orderId = order.odrid;
+                const sellId = order.totalhr;
+                const orderDate = order.totalprice;
+                const orderStatus = order.odrstatus;
+
+                content += `<div class="order-item">
+                                <p><strong>Order ID:</strong> ${orderId}</p>
+                                <p><strong>Sell ID:</strong> ${sellId}</p>
+                                <p><strong>Date of Order:</strong> ${orderDate}</p>
+                                <p><strong>Status of Order:</strong> ${orderStatus}</p>
+                            </div>`;
+            });
+
+            return content;
+        }
+
+        // Function to switch between tabs
+        function switchTab(tab) {
+            // Hide all tab contents
+            if(paymentHistoryTab)
+            {
+                fetchDataPayment();
+            }
+            if(sellHistoryTab)
+            {
+                fetchDatapost();
+            }
+
+            var tabContents = document.getElementsByClassName('tab-content');
+            for (var i = 0; i < tabContents.length; i++) {
+                tabContents[i].style.display = 'none';
+            }
+
+            // Show selected tab content
+            document.getElementById(tab).style.display = 'block';
+        }
+    </script>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+        }
+
+        h1 {
+            margin-bottom: 20px;
+        }
+
+        .tabs {
+            margin-bottom: 20px;
+        }
+
+        .tabs button {
+            background-color: #f2f2f2;
+            border: none;
+            color: #333;
+            padding: 10px 20px;
+            cursor: pointer;
+        }
+
+        .tabs button:hover {
+            background-color: #ddd;
+        }
+
+        .tabs button.active {
+            background-color: #ccc;
+        }
+
+        .tab-content {
+            display: none;
+            padding: 10px;
+            border: 1px solid #ccc;
+        }
+
+        .order-item {
+            margin-bottom: 20px;
+            padding: 10px;
+            border: 1px solid #ccc;
+            background-color: #f9f9f9;
+        }
+
+        .order-item p {
+            margin: 5px 0;
+        }
+    </style>
+    <style>
+
+    </style>
+</head>
+<body onload="fetchData()">
+<div id="bannerContainer"></div>
+<div id="second">
+<h1 style="padding-bottom: 20px;"></h1>
+</div>
+<div id="main">
+<div>
+    <button onclick="switchTab('orderHistoryTab')">Order History</button>
+    <button onclick="switchTab('paymentHistoryTab')">Payment History</button>
+    <button id="sellTab" onclick="switchTab('sellHistoryTab')">Sell History</button>
+</div>
+<div id="orderHistoryTab" class="tab-content">
+    <p>Loading order history...</p>
+</div>
+<div id="paymentHistoryTab" class="tab-content">xx
+    <p>Loading payment history...</p>
+</div>
+<div id="sellHistoryTab" class="tab-content">
+    <p>Loading sell history...</p>
+</div>
+<script>
+    // Show default tab content on page load
+    document.getElementById('orderHistoryTab').style.display = 'block';
+</script>
+</div>
+</body>
+</html>

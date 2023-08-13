@@ -1,7 +1,15 @@
 var userlogin = false;
 // Generate the banner dynamically
 window.addEventListener('load', function() {
-    localStorage.setItem('userid', 345);
+
+    //Comment set userid for static
+   //localStorage.setItem('userid', 345);
+  var userid=localStorage.getItem('userid');
+  if(userid != undefined)
+  {
+    userlogin = true;
+  }
+
     var bannerContainer = document.getElementById('bannerContainer');
     bannerContainer.appendChild(generateBanner(false)); // Assume the user is not logged in initially
   });
@@ -16,8 +24,13 @@ window.addEventListener('load', function() {
     var logo = document.createElement('div');
     logo.classList.add('logo');
     var logoImg = document.createElement('img');
-    logoImg.src = 'img/icon.png';
+    logoImg.src = 'img/logoComp.png';
     logoImg.alt = 'Company Logo';
+
+      logoImg.addEventListener('click', function(e) {
+          window.open('index.html','self');
+      });
+
     logo.appendChild(logoImg);
   
     var companyName = document.createElement('div');
@@ -29,7 +42,11 @@ window.addEventListener('load', function() {
   
     var loginButton = document.createElement('button');
     loginButton.classList.add('login-button');
-    loginButton.textContent = 'Login';
+
+
+
+
+    loginButton.textContent = localStorage.getItem('username');;
     
   
     var menuContent = document.createElement('div');
@@ -49,7 +66,10 @@ window.addEventListener('load', function() {
   
     var previousOrdersLink = document.createElement('a');
     previousOrdersLink.href = '#';
-    previousOrdersLink.textContent = 'Previous Orders';
+    previousOrdersLink.textContent = 'History';
+      previousOrdersLink.addEventListener('click', function(e) {
+          window.open('historyform.html','_self');
+      });
   
     menuContent.appendChild(profileLink);
     menuContent.appendChild(settingsLink);
@@ -80,8 +100,9 @@ window.addEventListener('load', function() {
     
        // document.getElementById('popup-overlay').style.display = 'block';
     
-       var popupWindow = window.open('logincontrol.html', 'Popup','directories=no,titlebar=no,toolbar=no,location=no,status=no,menubar=no,scrollbars=no,resizable=no,width=400,height=400, top=130px');
-       
+       //var popupWindow = window.open('logincontrol.html', 'Popup','directories=no,titlebar=no,toolbar=no,location=no,status=no,menubar=no,scrollbars=no,resizable=no,width=400,height=400, top=130px');
+    //   var popupWindow = window.open('login.html', 'Popup','directories=no,titlebar=no,toolbar=no,location=no,status=no,menubar=no,scrollbars=no,resizable=no,width=400,height=400, top=130px');
+     // popupWindow.updateElement = updateElementValue;
 
      
         //document.getElementById('popup-overlay').style.display = 'none';
@@ -90,12 +111,16 @@ window.addEventListener('load', function() {
 
       // old coe for menu auto login
       loginButton.style.display = 'none';
-  
+
+        userid= localStorage.getItem('userid');
+        userlogin = localStorage.getItem('userlogin');
+
   
       // Simulate user login
-      var loggedInUsername = 'John Doe';
-  userlogin = true;
+      var loggedInUsername =  localStorage.getItem('username');//'John Doe';
+
       var usernameButton = document.createElement('button');
+        usernameButton.id= 'btnloginmain';
       usernameButton.classList.add('login-button');
       usernameButton.textContent = loggedInUsername;
   
@@ -151,7 +176,13 @@ window.addEventListener('load', function() {
     return banner;
   }
    // JavaScript to show/hide the additional div
-   
+
+
+function updateElementValue(newValue) {
+  // Update the element in the main page
+  document.getElementById("btnloginmain").innerText = newValue;
+}
+
    function clickcreateorder()
    {
     var showAdditionalDivBtn = document.getElementById('showAdditionalDiv');

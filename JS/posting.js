@@ -134,10 +134,10 @@ alert(userId)
         body: formData
     })
         .then(response => {
-
+//alert(response.status);
             if (response.ok) {
 
-
+return response;
 
             } else {
                 throw new Error('Error: ' + response.status + ' ' + response.statusText);
@@ -145,13 +145,15 @@ alert(userId)
             }
         })
         .then(data => {
-            alert(data);
+           // alert(data);
+            alert("Your post successfully submitted. This post will be activated in 24 hrs.");
+            window.open("index.html","_self");
 
-            // Do something with the response data
         })
         .catch(error => {
             console.error('Error submitting form data:', error);
         });
+
 }
 
   
