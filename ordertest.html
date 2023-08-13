@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Order Form</title>
+</head>
+<body>
+<form id="orderForm" enctype="multipart/form-data" action="http://localhost:8080/vi/api/ordersave" method="POST">
+    <label for="userId">User ID:</label>
+    <input type="text" id="userId" name="userId"><br>
+
+    <label for="postId">Post ID:</label>
+    <input type="text" id="postId" name="postId"><br>
+
+
+
+    <label for="totalhr">Total Hours:</label>
+    <input type="text" id="totalhr" name="totalhr"><br>
+
+    <label for="totslprice">Total Price:</label>
+    <input type="text" id="totslprice" name="totslprice"><br>
+
+    <label for="odrUrl">Order URL:</label>
+    <input type="text" id="odrUrl" name="odrUrl"><br>
+
+    <label for="odrdetails">Order Details:</label>
+    <input type="text" id="odrdetails" name="odrdetails"><br>
+
+    <label for="odrtitle">Order Title:</label>
+    <input type="text" id="odrtitle" name="odrtitle"><br>
+
+    <!-- Uncomment the line below if 'odrstatus' is required -->
+    <!-- <label for="odrstatus">Order Status:</label>
+    <input type="text" id="odrstatus" name="odrstatus"><br> -->
+
+    <label for="fileInput">Upload Image:</label>
+    <input type="file" id="fileInput" name="fileInput"><br>
+
+    <input type="submit" value="Submit">
+</form>
+</body>
+</html>

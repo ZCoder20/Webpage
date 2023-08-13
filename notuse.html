@@ -1,152 +1,32 @@
-<html><head></head><body>
-    <script>
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Your Website</title>
+    <link rel="stylesheet" href="CSS/styles.css">
 
-
-
-
-            function submitForm() {
-                var form = document.getElementById('myForm');
-                var formData = new FormData(form);
-
-                fetch('http://localhost:8080/vi/api/test', {
-                    method: 'POST',
-                    body: formData
-                })
-                    .then(response => {
-                        alert(response)  ;
-                        if (response.ok) {
-                           alert("hello "+  JSON.stringify(response.json()));
-
-                          return  response.json();
-                        } else {
-                            throw new Error('Error: ' + response.status + ' ' + response.statusText);
-                            alert("Erroraaaa "+response.status + ' ' + response.statusText)
-                        }
-                    })
-                    .then(data => {
-                        alert(data)
-
-                        // Do something with the response data
-                    })
-                    .catch(error => {
-                        console.error('Error submitting form data:', error);
-                    });
-            }
-
-
-
-
-
-
-
-    </script>
-<form id="myForm" enctype="multipart/form-data">
-    <div class="form-group">
-        <label for="firstName">First Name:</label>
-        <input  type="text" name="firstName" id="firstName" required>
+</head>
+<body>
+<header class="main-header">
+    <div class="banner">
+        <img src="banner-image.jpg" alt="Banner Image">
     </div>
-    <div class="form-group">
-        <label for="middleName">Middle Name:</label>
-        <input type="text" id="middleName">
+    <div class="logo">
+        <img src="company-logo.png" alt="Company Logo">
     </div>
-    <div class="form-group">
-        <label for="lastName">Last Name:</label>
-        <input type="text" id="lastName" required>
-    </div>
-    <div class="form-group">
-        <label for="emailId">Email:</label>
-        <input type="email" id="emailId" required>
-    </div>
-    <div class="form-group">
-        <label for="phoneNum1">Phone Number:</label>
-        <input type="tel" id="phoneNum1" required>
-    </div>
-    <div class="form-group">
-        <label>Street Address:</label>
-        <input type="text" id="streetAddress1" placeholder="Street Address" required>
+    <nav class="main-nav">
+        <ul>
+            <li><a href="#">Profile</a></li>
+            <li><a href="#">Settings</a></li>
+            <li><a href="#">New Post</a></li>
+            <li><a href="#">History</a></li>
+        </ul>
+    </nav>
+</header>
 
-    </div>
-    <div class="form-group">
-        <label>City</label>
-
-        <input type="text" id="city" placeholder="City" required>
-
-    </div>
-    <div class="form-group">
-        <label>State</label>
-
-        <input type="text" id="state" placeholder="State" required>
-
-    </div>
-    <div class="form-group">
-        <label>Zip Code</label>
-
-        <input type="text" id="zip-code" placeholder="Zip Code" required>
-    </div>
-    <div class="form-group">
-        <label for="country">Country:</label>
-        <select id="country" required>
-            <option value="">Select Country</option>
-            <option value="USA">USA</option>
-            <option value="Canada">Canada</option>
-            <option value="UK">UK</option>
-            <!-- Add more countries here -->
-        </select>
-    </div>
-    <div class="form-group">
-        <label for="citizenCountry">Nationality:</label>
-        <input type="text" id="citizenCountry" required>
-    </div>
-    <div class="form-group">
-        <label for="dob">Date of Birth:</label>
-        <input type="date" id="dob" required>
-    </div>
-    <div class="form-group">
-        <label for="idNumber">ID Number:</label>
-        <input type="text" id="idNumber" required>
-    </div>
-
-    <div class="form-group">
-        <label for="userId">userId</label>
-        <input type="text" id="userId" required>
-    </div>
-    <div class="form-group">
-        <label for="idType">ID Type:</label>
-        <input type="text" id="idType" required>
-    </div>
-    <div class="form-group">
-        <label for="issuestate">ID Issue State:</label>
-        <input type="text" id="issuestate" required>
-    </div>
-    <div class="form-group">
-        <label for="issueCountry">ID Issue Country:</label>
-        <input type="text" id="issueCountry" required>
-    </div>
-
-    <div class="form-group">
-        <label for="categoryPreference">ID Issue Country:</label>
-        <input type="text" id="categoryPreference" required>
-    </div>
-
-    <div class="form-group">
-        <label for="verificationLink">ID Issue Country:</label>
-        <input type="text" id="verificationLink" required>
-    </div>
-    <div class="form-group" id="id-upload-field">
-        <label for="imageFile">Upload ID Document:</label>
-        <input type="file" id="imageFile" accept="image/*" required>
-    </div>
-    <div class="form-group" id="option-field">
-        <label for="options">Options:</label>
-        <select id="options" required>
-            <option value="">Select Option</option>
-            <option value="option1">Option 1</option>
-            <option value="option2">Option 2</option>
-            <!-- Add more options here -->
-        </select>
-    </div>
-
-    <button type="button" onclick="submitForm()">Submit</button>
-  </form>
-</body></html>
-  
+<main>
+    <!-- Your main content goes here -->
+</main>
+</body>
+</html>

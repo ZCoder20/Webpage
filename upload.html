@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Form with File Upload</title>
+</head>
+<body>
+  <form id="myForm">
+    <label for="name">Name:</label>
+    <input type="text" id="name" name="name" required><br><br>
+
+    <label for="photo">Photo:</label>
+    <input type="file" id="photo" name="photo" accept="image/*" required><br><br>
+
+    <label for="video">Video:</label>
+    <input type="file" id="video" name="video" accept="video/*" required><br><br>
+
+    <button type="button" onclick="submitForm()">Submit</button>
+  </form>
+
+  <script>
+    function submitForm() {
+      const form = document.getElementById('myForm');
+      const formData = new FormData(form);
+
+      const name = document.getElementById('name').value;
+      const photoFile = document.getElementById('photo').files[0];
+      const videoFile = document.getElementById('video').files[0];
+
+      formData.append('name', name);
+
+      const photoReader = new FileReader();
+      photoReader.onload = function() {
+        const photoData = photoReader.result;
+        formData.append('photo', photoData);
+        sendFormData(formData);
+      };
+      photoReader.readAsDataURL(photoFile);
+
+      const videoReader = new FileReader();
+      videoReader.onload = function() {
+        const videoData = videoReader.result;
+        formData.append('video', videoData);
+        sendFormData(formData);
+      };
+      videoReader.readAsDataURL(videoFile);
+    }
+
+    function sendFormData(formData) {
+        alert("")
+        for (const [name, value] of formData.entries()) {
+    alert(name + ': ' + value);
+  }
+  alert("callapi")
+      fetch('https://api.example.com/upload', {
+        method: 'POST',
+        body: formData
+      })
+        .then(response => {
+          if (response.ok) {
+            return response.json();
+          } else {
+            throw new Error('Error: ' + response.status + ' ' + response.statusText);
+          }
+        })
+        .then(data => {
+          console.log(data);
+        })
+        .catch(error => {
+          console.error('Error:', error.message);
+        });
+    }
+  </script>
+</body>
+</html>

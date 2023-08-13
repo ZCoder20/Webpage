@@ -1,73 +1,106 @@
 <!DOCTYPE html>
 <html>
 <head>
-<meta name="viewport" content="width=device-width, initial-scale=1">
-<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
-<link rel="stylesheet" type="text/css" href="./CSS/loginpop.css">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+  <link rel="stylesheet" type="text/css" href="./CSS/loginpop.css">
+  <script src="https://accounts.google.com/gsi/client" async defer></script>
+
+
 </head>
 <body>
 
-    <div id="popup-overlay">
-    <div id="popup-content">
-        
-<div class="popcontainer">
-    <input type="button" id="crossbutton" value="X">
-  <form action="/action_page.php">
-    <div class="row">
-      
-      <h2 style="text-align:center">Login with Social Media or Manually</h2>
-      <div class="vl">
-        <span class="vl-innertext">or</span>
-      </div>
+<div id="popup-overlay">
+  <div id="popup-content">
 
-      <div class="col">
-        <a href="#" class="fb btn">
-          <i class="fa fa-facebook fa-fw"></i> Login with Facebook
-         </a>
-        <a href="#" class="twitter btn">
-          <i class="fa fa-twitter fa-fw"></i> Login with Twitter
-        </a>
-        <a href="#" class="google btn"><i class="fa fa-google fa-fw">
-          </i> Login with Google+
-        </a>
-      </div>
+    <div class="popcontainer">
+      <input type="button" id="crossbutton" value="X">
+      <form action="/action_page.php">
+        <div class="row">
 
-      <div class="col">
-        <div class="hide-md-lg">
-          <p>Or sign in manually:</p>
+          <h2 style="text-align:center">Login with Social Media or Manually</h2>
+          <div class="vl">
+            <span class="vl-innertext">or</span>
+          </div>
+
+          <div class="col">
+            <a href="#" class="fb btn">
+              <i class="fa fa-facebook fa-fw"></i> Login with Facebook
+            </a>
+            <a href="#" class="twitter btn">
+              <i class="fa fa-twitter fa-fw"></i> Login with Twitter
+            </a>
+            <a href="#" class="google btn"><i class="fa fa-google fa-fw">
+            </i> Login with Google+
+            </a>
+            <div id="g_id_onload"
+                 data-client_id="1092237662039-tab4te545b2vg69686pujgrn91a1brn1.apps.googleusercontent.com"
+                 data-callback="handleCredentialResponse">
+            </div>
+            <div class="g_id_signin" data-type="standard"></div>
+          </div>
+
+          <div class="col">
+            <div class="hide-md-lg">
+              <p>Or sign in manually:</p>
+            </div>
+
+            <input type="text" name="username" placeholder="Username" required>
+            <input type="password" name="password" placeholder="Password" required>
+            <input type="submit" value="Login">
+          </div>
+
         </div>
+      </form>
+    </div>
 
-        <input type="text" name="username" placeholder="Username" required>
-        <input type="password" name="password" placeholder="Password" required>
-        <input type="submit" value="Login">
+    <div class="bottom-container">
+      <div class="row">
+        <div class="col">
+          <a href="register.html" style="color:white" class="btn">Sign up</a>
+        </div>
+        <div class="col">
+          <a href="#" style="color:white" class="btn">Forgot password?</a>
+        </div>
       </div>
-      
     </div>
-  </form>
-</div>
-
-<div class="bottom-container">
-  <div class="row">
-    <div class="col">
-      <a href="register.html" style="color:white" class="btn">Sign up</a>
-    </div>
-    <div class="col">
-      <a href="#" style="color:white" class="btn">Forgot password?</a>
-    </div>
-  </div>
-</div>
-
-</div></div>
+    <button id="signInButton">Sign in with Google</button>
+  </div></div>
 <button id="open-popup">Open Popup</button>
 <script>
-    document.getElementById('open-popup').addEventListener('click', function() {
-  document.getElementById('popup-overlay').style.display = 'block';
-});
+  document.getElementById('open-popup').addEventListener('click', function() {
+    document.getElementById('popup-overlay').style.display = 'block';
+  });
 
-document.getElementById('close-popup').addEventListener('click', function() {
-  document.getElementById('popup-overlay').style.display = 'none';
-});
+  document.getElementById('close-popup').addEventListener('click', function() {
+    document.getElementById('popup-overlay').style.display = 'none';
+  });
+  // Import the Google Sign-In JavaScript library
+  const googleSignIn = require('google-signin');
 
+  // Create a GoogleSignIn client object
+  const client = new googleSignIn.GoogleSignIn();
+
+  // Initialize the GoogleSignIn client object
+  client.init({
+    clientId: 'YOUR_CLIENT_ID',
+    scopes: ['profile', 'email']
+  });
+
+  // Add a button to the page that will sign the user in with Google
+  const signInButton = document.getElementById('signInButton');
+  signInButton.addEventListener('click', () => {
+    // Sign the user in with Google
+    client.signIn();
+  });
+
+  // Handle the sign-in event
+  client.onSignIn = (event) => {
+    // Get the user's ID token
+    const idToken = event.idToken;
+
+    // Do something with the user's ID token, such as store it in your database or send it to your backend server
+  };
 </script>
 </body>
 </html>

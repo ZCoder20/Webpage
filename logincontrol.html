@@ -1,60 +1,49 @@
 <!DOCTYPE html>
 <html>
 <head>
-  <title>Blue Theme Page</title>
-  <script src="./JS/script.js"></script>
-  <script src="./JS/loginpop.js"></script>
-  <link rel="stylesheet" type="text/css" href="./CSS/loginpop.css">
-  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+    <title>Google Login</title>
 </head>
 <body>
-<div>
-    <div>
-      <input type="button" id="crossbutton" OnClick="closepopup();" value="X">
-    <form action="">
-      <div class="row">
-        
-        <h2 style="text-align:center">Login with Social Media or Manually</h2>
-        <div class="vl">
-          <span class="vl-innertext">or</span>
-        </div>
-  
-        <div class="col">
-          <a href="#" class="fb btn">
-            <i class="fa fa-facebook fa-fw"></i> Login with Facebook
-           </a>
-          <a href="#" class="twitter btn">
-            <i class="fa fa-twitter fa-fw"></i> Login with Twitter
-          </a>
-          <a href="#" class="google btn"><i class="fa fa-google fa-fw">
-            </i> Login with Google+
-          </a>
-        </div>
-  
-        <div class="col">
-          <div class="hide-md-lg">
-            <p>Or sign in manually:</p>
-          </div>
-  
-          <input type="text" name="username" placeholder="Username" required>
-          <input type="password" name="password" placeholder="Password" required>
-          <input type="submit" value="Login">
-        </div>
-        
-      </div>
-    </form>
-  </div>
-  
-  <div >
-    <div class="row">
-      <div class="col">
-       <input type="button" id="signup" value="Sign Up" onclick="openregister();"/>
-      </div>
-      <div class="col">
-        <input type="button" id="signup" value="Forgot password?"/>
-       
-      </div>
-    </div>
-  </div>
-  </div>
-</body></html>
+<button id="signInButton">Sign in with Google</button>
+<script src="https://accounts.google.com/gsi/client" async defer></script>
+
+<script src="https://apis.google.com/js/platform.js?onload=init"></script>
+<script>
+    function init(auth) {
+        alert("");
+        // Import the Google Identity Services for Web library
+      //  const googleSignIn = require('google-identity-services-for-web');
+        const googleSignIn = window.google.accounts.id;
+
+
+        // Create a GoogleSignIn client object
+        const client = new googleSignIn.GoogleSignIn();
+
+        // Initialize the GoogleSignIn client object
+        client.init({
+            clientId: '1092237662039-tab4te545b2vg69686pujgrn91a1brn1.apps.googleusercontent.com',
+            scopes: ['profile', 'email']
+        });
+
+        // Add a button to the page that will sign the user in with Google
+        const signInButton = document.getElementById('signInButton');
+        signInButton.addEventListener('click', () => {
+            // Sign the user in with Google
+            client.signIn();
+        });
+
+        // Handle the sign-in event
+        client.onSignIn((event) => {
+            const idToken = event.credential;
+            alert(idToken);
+            // Do something with the user's ID token
+        });
+
+        client.onError((error) => {
+            alert(error);
+        });
+
+    }
+</script>
+</body>
+</html>
