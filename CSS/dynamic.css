@@ -41,6 +41,7 @@
 .menu-content {
   z-index: 9999;
   position: absolute;
+  width: auto;
 }
 .expandable-menu .menu-content {
   display: none;

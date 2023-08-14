@@ -44,8 +44,6 @@ window.addEventListener('load', function() {
     loginButton.classList.add('login-button');
 
 
-
-
     loginButton.textContent = localStorage.getItem('username');;
     
   
@@ -55,10 +53,12 @@ window.addEventListener('load', function() {
     var profileLink = document.createElement('a');
     profileLink.href = '#';
     profileLink.textContent = 'Profile';
+    profileLink.style.font.small();
   
-    var settingsLink = document.createElement('button');
+    var settingsLink = document.createElement('a');
     
     settingsLink.textContent = 'New Post';
+    settingsLink.style.font.fontsize(34);
     settingsLink.addEventListener('click', function(e) {
       window.open('Posting.html','_blank');
     });

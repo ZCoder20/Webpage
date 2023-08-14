@@ -138,13 +138,13 @@ function Createimage(myObj)
 {
     const imageContainer = document.getElementById('imageContainer');
     var name = ''
-    var emp = ''
+    var price = ''
     var total  =''
     var url=''
 var Emp1=''
-    const tl = 'bahutbhait'
-    const tv = 'sadadaffg fsdf g g gg '
-    const tp  ='esss vv 55 rdndnfknned dfdf fg'
+    const tl = 'test'
+    const tv = 'Test '
+    const tp  ='Test'
     imageContainer.innerHTML = '';
     count =0;
     for (const x in myObj) {
@@ -160,7 +160,7 @@ var Emp1=''
         }
         if(x=='price')
         {
-            emp =myObj[x];
+            price =myObj[x];
         }
         if(x=='totalF1')
         {
@@ -194,7 +194,7 @@ var Emp1=''
             spanitem.className='spanclass'
             const dynamicdiv = document.createElement('div');
 
-            dynamicdiv.innerHTML='<table><tr><td>'+name+'</td><td>'+emp+'</td></tr><tr><td>'+name+'</td><td>name</td></tr><tr><td>'+total+'</td><td>Emp1</td></tr><tr><td>Name</td><td>Emp1</td></tr><tr><td>Name</td><td>Emp1</td></tr></table>';
+            dynamicdiv.innerHTML='<table><tr><td colspan="2">name</td></tr><tr><td>'+'Price/hr: '+'</td><td>price</td></tr><tr><td>'+'Subscribers: '+'</td><td>total</td></tr></table>';
 
 //create table
             spanitem.append(dynamicdiv);
@@ -298,10 +298,10 @@ imageUrls.forEach(obj => {
     posttitle = obj.postTitle;
     postid = obj.postId;
     posturl = obj.postURL;
-    total_v = obj.totalF1;
-    total_s = obj.totalF2;
-    total_l = obj.totalF3;
-    total_p = obj.totalF4;
+    total_v = obj.totalview;
+    total_s = obj.totalsubs;
+    total_l = obj.totallike;
+    total_p = obj.totalpost;
     category = obj.category;
     price = obj.price;
     plat = obj.plat;
@@ -324,7 +324,8 @@ imageUrls.forEach(obj => {
 
       clickimage('img/'+obj.imgpath,posttitle,posturl,price,total_l,total_v,total_p,total_s,category,plat,smname,monot,isrestric,rsn_rest,pstlang,postid,obj);
     });
-    
+
+
     //imageItem.width = "100px";
    // imageItem.height = "100px";
     parentdiv.appendChild(imageItem)
@@ -335,8 +336,8 @@ imageUrls.forEach(obj => {
     spanitem.className='spanclass'
     const dynamicdiv = document.createElement('div');
    
-    dynamicdiv.innerHTML='<table><tr><td>'+posttitle+'</td><td>'+posturl+'</td></tr><tr><td>'+price+'</td><td>'+total_l+'</td></tr><tr><td>'+total_s+'</td><td>'+url+'</td></tr></table>';
-    
+    dynamicdiv.innerHTML='<table><tr><td colspan="2">'+posttitle+'</td></tr><tr><td>'+'Price/hr: '+'</td><td>'+price+'</td></tr><tr><td>'+'Subscribers: </td><td>'+total_v+'</td></tr></table>';
+    ''
 //create table
       spanitem.append(dynamicdiv);
    // imageContainer.appendChild(spanitem);
@@ -391,7 +392,7 @@ imageUrls.forEach(obj => {
     url += '?param1=' + encodeURIComponent(parameter1);
     url += '&param2=' + encodeURIComponent(encodedJsonString);
 
-  
+        alert(jsonString);
    
     window.open(url, '_blank');
   

@@ -33,7 +33,7 @@ function loginclick()
 
           //  window.open('index.html','self');
             window.location.replace('index.html');
-            alert("");
+
         });
 
 
@@ -44,4 +44,14 @@ function loginclick()
         console.error('Error calling API:', error);
       });
 
+}
+
+function forgetpwd()
+{
+    window.location.replace('forgetpwd.html');
+}
+
+function signUp()
+{
+    window.location.replace('forgetpwd.html');
 }
